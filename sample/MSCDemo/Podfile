@@ -1,0 +1,43 @@
+platform :ios, '8.0'
+use_frameworks!
+pod 'MJRefresh'
+pod 'SDWebImage', '~> 3.7.3'
+pod 'UIActivityIndicator-for-SDWebImage'
+pod 'SBJson', '~> 4.0.2'
+pod 'SwiftyJSON'
+pod 'Alamofire', '~> 3.0'
+pod 'DGElasticPullToRefresh', '1.0.2'
+pod 'PagingMenuController'
+pod 'DZNEmptyDataSet'
+pod 'DatePickerCell'
+pod 'ImagePickerSheetController', '~> 0.9.1'
+pod 'M13ProgressSuite'
+pod 'Material', '~> 1.0'
+pod 'ZLSwipeableViewSwift'
+
+## 主模块(必须)
+pod 'ShareSDK2'
+# Mob 公共库(必须) 如果同时集成SMSSDK iOS2.0:可看此注意事项：http://bbs.mob.com/thread-20051-1-1.html
+pod 'MOBFoundation'
+
+## UI模块(含所有UI样式,可选)
+pod 'ShareSDK2/UI'
+#
+## 评论和赞模块(可选)
+pod 'ShareSDK2/Comment'
+
+
+
+# 短信(可选)
+pod 'ShareSDK2/Connection/SMS'
+## 邮件(可选)
+pod 'ShareSDK2/Connection/Mail'
+
+# 新浪微博(可选)
+pod 'ShareSDK2/Connection/SinaWeibo'
+# 微信(可选)
+pod 'ShareSDK2/Connection/WeChat'
+# 腾讯QQ(可选)
+pod 'ShareSDK2/Connection/QQ'
+# QQ空间(可选)
+pod 'ShareSDK2/Connection/QZone'

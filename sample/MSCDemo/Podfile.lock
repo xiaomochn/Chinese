@@ -1,0 +1,95 @@
+PODS:
+  - Alamofire (3.2.1)
+  - DatePickerCell (1.0.4)
+  - DGElasticPullToRefresh (1.0.2)
+  - DZNEmptyDataSet (1.7.3)
+  - ImagePickerSheetController (0.9.1)
+  - M13ProgressSuite (1.2.7)
+  - Material (1.35.3)
+  - MJRefresh (3.1.0)
+  - MOBFoundation (1.5.0)
+  - PagingMenuController (0.8.0)
+  - SBJson (4.0.2)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+  - ShareSDK2 (2.12.4):
+    - ShareSDK2/Core (= 2.12.4)
+  - ShareSDK2/Comment (2.12.4)
+  - ShareSDK2/Connection/Mail (2.12.4)
+  - ShareSDK2/Connection/QQ (2.12.4):
+    - ShareSDK2/Extend/QQConnectSDK
+  - ShareSDK2/Connection/QZone (2.12.4):
+    - ShareSDK2/Extend/QQConnectSDK
+  - ShareSDK2/Connection/SinaWeibo (2.12.4):
+    - ShareSDK2/Extend/SinaWeiboSDK
+  - ShareSDK2/Connection/SMS (2.12.4)
+  - ShareSDK2/Connection/WeChat (2.12.4):
+    - ShareSDK2/Extend/WeChatSDK
+  - ShareSDK2/Core (2.12.4)
+  - ShareSDK2/Extend/QQConnectSDK (2.12.4)
+  - ShareSDK2/Extend/SinaWeiboSDK (2.12.4)
+  - ShareSDK2/Extend/WeChatSDK (2.12.4)
+  - ShareSDK2/UI (2.12.4):
+    - ShareSDK2/UI/Flat (= 2.12.4)
+    - ShareSDK2/UI/iPadDefault (= 2.12.4)
+    - ShareSDK2/UI/iPadSimple (= 2.12.4)
+    - ShareSDK2/UI/iPhoneAppRecommend (= 2.12.4)
+    - ShareSDK2/UI/iPhoneDefault (= 2.12.4)
+    - ShareSDK2/UI/iPhoneSimple (= 2.12.4)
+  - ShareSDK2/UI/Flat (2.12.4)
+  - ShareSDK2/UI/iPadDefault (2.12.4)
+  - ShareSDK2/UI/iPadSimple (2.12.4)
+  - ShareSDK2/UI/iPhoneAppRecommend (2.12.4)
+  - ShareSDK2/UI/iPhoneDefault (2.12.4)
+  - ShareSDK2/UI/iPhoneSimple (2.12.4)
+  - SwiftyJSON (2.3.2)
+  - UIActivityIndicator-for-SDWebImage (1.2):
+    - SDWebImage (~> 3.7)
+  - ZLSwipeableViewSwift (0.0.6)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.0)
+  - DatePickerCell
+  - DGElasticPullToRefresh (= 1.0.2)
+  - DZNEmptyDataSet
+  - ImagePickerSheetController (~> 0.9.1)
+  - M13ProgressSuite
+  - Material (~> 1.0)
+  - MJRefresh
+  - MOBFoundation
+  - PagingMenuController
+  - SBJson (~> 4.0.2)
+  - SDWebImage (~> 3.7.3)
+  - ShareSDK2
+  - ShareSDK2/Comment
+  - ShareSDK2/Connection/Mail
+  - ShareSDK2/Connection/QQ
+  - ShareSDK2/Connection/QZone
+  - ShareSDK2/Connection/SinaWeibo
+  - ShareSDK2/Connection/SMS
+  - ShareSDK2/Connection/WeChat
+  - ShareSDK2/UI
+  - SwiftyJSON
+  - UIActivityIndicator-for-SDWebImage
+  - ZLSwipeableViewSwift
+
+SPEC CHECKSUMS:
+  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  DatePickerCell: 20d2ba8b5cd5bb8a5a79e2b43bc7758e3b65daf2
+  DGElasticPullToRefresh: 49cc35f3509b46a58a8f45ae0165d0a8e0feccea
+  DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
+  ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
+  M13ProgressSuite: 03d194af6359da440641ba758aed5a18b0386a86
+  Material: 2989ce92c519fbdc265525819c37df0851701c4c
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  MOBFoundation: 38b70ebfd8835884aa36bd4ef53721ad9a2f0e2c
+  PagingMenuController: 1a9ff8ad0ab9704f215706997c1a624bc951f508
+  SBJson: c18691cc18375b14664ff0fec841f8c4faef1934
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  ShareSDK2: cfe71b8d026bf8f7d592396ab195937bc89bbead
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
+  ZLSwipeableViewSwift: f252438a48d20b1687eba0083762be4c13448da2
+
+COCOAPODS: 0.39.0
