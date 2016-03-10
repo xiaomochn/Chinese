@@ -13,5 +13,5 @@
 @interface ISEViewController : UIViewController
 
 @property (nonatomic, strong) ISEParams *iseParams;
-
+- (void)start:(NSString *) str;
 @end

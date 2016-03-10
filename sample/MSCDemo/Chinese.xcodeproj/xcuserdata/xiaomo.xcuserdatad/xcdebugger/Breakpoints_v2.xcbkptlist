@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MSCDemo/business/ise/ISEViewController.m"
-            timestampString = "479209273.207717"
+            timestampString = "479210173.196724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "574"
-            endingLineNumber = "574"
+            startingLineNumber = "517"
+            endingLineNumber = "517"
             landmarkName = "-onResults:isLast:"
             landmarkType = "5">
          </BreakpointContent>

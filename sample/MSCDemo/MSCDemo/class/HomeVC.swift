@@ -56,6 +56,8 @@ class HomeVC: ISEViewController {
             
             card.lable.attributedText = attributeString
         }
+        
+        self.start("你是谁")
     }
     
 }
