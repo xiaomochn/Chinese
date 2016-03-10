@@ -54,6 +54,7 @@
 		CD28ABAC1C8FEA7B00808902 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD28ABAB1C8FEA7B00808902 /* MainStoryboard.storyboard */; };
 		CD28ABAF1C8FED9C00808902 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28ABAE1C8FED9C00808902 /* HomeVC.swift */; };
 		CD28ABB11C8FF9FB00808902 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28ABB01C8FF9FB00808902 /* CardView.swift */; };
+		CD28ABB81C9169E200808902 /* PickItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28ABB71C9169E200808902 /* PickItem.swift */; };
 		E92E12F619F88BF2000AA6DC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92E12F519F88BF2000AA6DC /* CoreTelephony.framework */; };
 		E92E12F819F88BFD000AA6DC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92E12F719F88BFD000AA6DC /* CoreLocation.framework */; };
 		E931A1601760555A0077E502 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E931A15F176055590077E502 /* QuartzCore.framework */; };
@@ -156,6 +157,7 @@
 		CD28ABAD1C8FED9C00808902 /* Chinese-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Chinese-Bridging-Header.h"; path = "MSCDemo/Chinese-Bridging-Header.h"; sourceTree = "<group>"; };
 		CD28ABAE1C8FED9C00808902 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeVC.swift; path = class/HomeVC.swift; sourceTree = "<group>"; };
 		CD28ABB01C8FF9FB00808902 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		CD28ABB71C9169E200808902 /* PickItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickItem.swift; sourceTree = "<group>"; };
 		E92A0DB6198885D500D563C9 /* Chinese-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Chinese-Prefix.pch"; sourceTree = "<group>"; };
 		E92E12F519F88BF2000AA6DC /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E92E12F719F88BFD000AA6DC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -425,6 +427,7 @@
 		CD28ABB21C90096200808902 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				CD28ABB71C9169E200808902 /* PickItem.swift */,
 			);
 			name = Vendors;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				84A85D981B4CFDA80056929E /* ISEResultPhone.m in Sources */,
 				845FA0301AFC5186008447CE /* UnderstandViewController.m in Sources */,
 				845FA0331AFC5186008447CE /* TTSUIController.m in Sources */,
+				CD28ABB81C9169E200808902 /* PickItem.swift in Sources */,
 				84A85D9D1B4CFDA80056929E /* ISEResultSyll.m in Sources */,
 				845FA0321AFC5186008447CE /* TTSConfigViewController.m in Sources */,
 				84A85D971B4CFDA80056929E /* ISEResultFinal.m in Sources */,
@@ -690,8 +694,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ping cheng (MF544BKY24)";
-				COPY_PHASE_STRIP = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zong ming qiao (RX47KT87K3)";
+				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -731,7 +735,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: ping cheng (MF544BKY24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zong ming qiao (RX47KT87K3)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -746,7 +750,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "f6c0f702-6ab7-492b-b55a-e26030881550";
 				SDKROOT = iphoneos;
@@ -770,7 +774,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../../lib",
 				);
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MSCDemo/Chinese-Prefix.pch";
 				INFOPLIST_FILE = "MSCDemo/Chinese-Info.plist";
@@ -807,7 +811,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../../lib",
 				);
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MSCDemo/Chinese-Prefix.pch";
 				INFOPLIST_FILE = "MSCDemo/Chinese-Info.plist";

@@ -316,38 +316,38 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
  */
 - (void)onBtnStart:(id)sender {
     
-	[self.iFlySpeechEvaluator setParameter:@"16000" forKey:[IFlySpeechConstant SAMPLE_RATE]];
-	[self.iFlySpeechEvaluator setParameter:@"utf-8" forKey:[IFlySpeechConstant TEXT_ENCODING]];
-	[self.iFlySpeechEvaluator setParameter:@"xml" forKey:[IFlySpeechConstant ISE_RESULT_TYPE]];
-
-    [self.iFlySpeechEvaluator setParameter:@"eva.pcm" forKey:[IFlySpeechConstant ISE_AUDIO_PATH]];
-    
-    NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-    
-    NSLog(@"text encoding:%@",[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant TEXT_ENCODING]]);
-    NSLog(@"language:%@",[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant LANGUAGE]]);
-    
-    BOOL isUTF8=[[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant TEXT_ENCODING]] isEqualToString:@"utf-8"];
-    BOOL isZhCN=[[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant LANGUAGE]] isEqualToString:KCLanguageZHCN];
-    
-    BOOL needAddTextBom=isUTF8&&isZhCN;
-    NSMutableData *buffer = nil;
-//    if(needAddTextBom){
-//        if(str && str.length>0){
-//            Byte bomHeader[] = { 0xEF, 0xBB, 0xBF };
-//            buffer = [NSMutableData dataWithBytes:bomHeader length:sizeof(bomHeader)];
-//            [buffer appendData:[self.textView.text dataUsingEncoding:NSUTF8StringEncoding]];
-//            NSLog(@" \ncn buffer length: %lu",(unsigned long)[buffer length]);
-//        }
-//    }else{
-//        buffer= [NSMutableData dataWithData:[self.textView.text dataUsingEncoding:encoding]];
-//        NSLog(@" \nen buffer length: %lu",(unsigned long)[buffer length]);
-//    }
-    self.resultView.text =KCResultNotify2;
-    self.resultText=@"";
-	[self.iFlySpeechEvaluator startListening:buffer params:nil];
-    self.isSessionResultAppear=NO;
-    self.isSessionEnd=NO;
+//	[self.iFlySpeechEvaluator setParameter:@"16000" forKey:[IFlySpeechConstant SAMPLE_RATE]];
+//	[self.iFlySpeechEvaluator setParameter:@"utf-8" forKey:[IFlySpeechConstant TEXT_ENCODING]];
+//	[self.iFlySpeechEvaluator setParameter:@"xml" forKey:[IFlySpeechConstant ISE_RESULT_TYPE]];
+//
+//    [self.iFlySpeechEvaluator setParameter:@"eva.pcm" forKey:[IFlySpeechConstant ISE_AUDIO_PATH]];
+//    
+//    NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+//    
+//    NSLog(@"text encoding:%@",[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant TEXT_ENCODING]]);
+//    NSLog(@"language:%@",[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant LANGUAGE]]);
+//    
+//    BOOL isUTF8=[[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant TEXT_ENCODING]] isEqualToString:@"utf-8"];
+//    BOOL isZhCN=[[self.iFlySpeechEvaluator parameterForKey:[IFlySpeechConstant LANGUAGE]] isEqualToString:KCLanguageZHCN];
+//    
+//    BOOL needAddTextBom=isUTF8&&isZhCN;
+//    NSMutableData *buffer = nil;
+////    if(needAddTextBom){
+////        if(str && str.length>0){
+////            Byte bomHeader[] = { 0xEF, 0xBB, 0xBF };
+////            buffer = [NSMutableData dataWithBytes:bomHeader length:sizeof(bomHeader)];
+////            [buffer appendData:[self.textView.text dataUsingEncoding:NSUTF8StringEncoding]];
+////            NSLog(@" \ncn buffer length: %lu",(unsigned long)[buffer length]);
+////        }
+////    }else{
+////        buffer= [NSMutableData dataWithData:[self.textView.text dataUsingEncoding:encoding]];
+////        NSLog(@" \nen buffer length: %lu",(unsigned long)[buffer length]);
+////    }
+//    self.resultView.text =KCResultNotify2;
+//    self.resultText=@"";
+//	[self.iFlySpeechEvaluator startListening:buffer params:nil];
+//    self.isSessionResultAppear=NO;
+//    self.isSessionEnd=NO;
     
 }
 
@@ -356,7 +356,7 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
     [self.iFlySpeechEvaluator setParameter:@"16000" forKey:[IFlySpeechConstant SAMPLE_RATE]];
     [self.iFlySpeechEvaluator setParameter:@"utf-8" forKey:[IFlySpeechConstant TEXT_ENCODING]];
     [self.iFlySpeechEvaluator setParameter:@"xml" forKey:[IFlySpeechConstant ISE_RESULT_TYPE]];
-    
+//    [self.iFlySpeechEvaluator setParameter:@"json" forKey:[IFlySpeechConstant RESULT_TYPE]];
     [self.iFlySpeechEvaluator setParameter:@"eva.pcm" forKey:[IFlySpeechConstant ISE_AUDIO_PATH]];
     
     NSStringEncoding encoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
@@ -503,6 +503,21 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
     
     [self performSelectorOnMainThread:@selector(resetBtnSatus:) withObject:errorCode waitUntilDone:NO];
 
+    
+}
+
+-(void)resetBtnSatus:(IFlySpeechError *)errorCode{
+    
+    if(errorCode && errorCode.errorCode!=0){
+        self.isSessionResultAppear=NO;
+        self.isSessionEnd=YES;
+        
+        self.resultText=@"";
+    }else{
+        self.isSessionResultAppear=YES;
+        self.isSessionEnd=YES;
+    }
+    
 }
 
 /*!

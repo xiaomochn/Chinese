@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Ji.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>M13ProgressSuite.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -87,17 +92,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0DB113166E42AE38E8B70EED3301F385</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>115824B7CB2E76E5ACB836A251E79404</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>11A4196D30CD7BD10E8E39951673B004</key>
+		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
+		<key>1DCADFF04C62A69E22A270B689FB11CB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -108,6 +118,16 @@
 			<true/>
 		</dict>
 		<key>2AAAB9973850C35994DC04473435E1A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4076AB210862780B396ECD21A4D7C488</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4D6DB68E850938095360C21590844F8F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,17 +152,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>73CADB88C35E1E3C22414052DB542D36</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8AC8D0C3CCE3768F32A9176CC6E0800F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8CDC700319D6A50359956DDDBD4E66EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,17 +167,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1304A339C75CEE60E540DB27F0AC6F7</key>
+		<key>C4F1DB440B42642636E376448A196E87</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DB4F273E8E1AEF9C991F3AADACFF5400</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EE93A3BBC498F33E8371E54C554A73DE</key>
+		<key>DD5CDAF6D46C97DCF48D5A2BCAB608E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

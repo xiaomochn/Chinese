@@ -10,6 +10,14 @@ import UIKit
 
 class CardView: UIView {
     var lable:UILabel!
+    var title:UILabel!
+    var itemDate:PickItem{
+        set(newValue){
+            lable.text=newValue.content
+            title.text=newValue.title
+        }
+        get{return self.itemDate}
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -32,6 +40,11 @@ class CardView: UIView {
         // Corner Radius
         layer.cornerRadius = 10.0;
         lable=UILabel(frame: self.frame)
+        lable.numberOfLines=0
+        var frame = self.frame
+        frame.size.height=40
+        title=UILabel(frame: frame)
         self.addSubview(lable)
+        self.addSubview(title)
     }
 }

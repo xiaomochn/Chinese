@@ -83,15 +83,10 @@
     [_srcTextView.layer setCornerRadius:7.0f];
     
 
-    _resultTextView.layer.borderWidth = 0.5f;
-    _resultTextView.layer.borderColor = [[UIColor whiteColor] CGColor];
-    [_resultTextView.layer setCornerRadius:7.0f];
+ 
 }
 
--(void)onKeyBoardDown:(id) sender
-{
-    [_resultTextView resignFirstResponder];
-}
+
 
 #pragma mark - 事件响应函数
 
@@ -124,7 +119,7 @@
         buffer= [NSMutableData dataWithData:[self.srcTextView.text dataUsingEncoding:encoding]];
         NSLog(@" \nen buffer length: %lu",(unsigned long)[buffer length]);
     }
-    self.resultTextView.text =INDICATOR_READ;
+  
     self.resultText=@"";
     [self.speechEveluator startListening:buffer params:nil];
     self.isSessionResultAppear=NO;
@@ -137,12 +132,11 @@
 
 - (IBAction)stopEBtnHandler:(id)sender {
     if(!self.isSessionResultAppear &&  !self.isSessionEnd){
-        self.resultTextView.text = INDICATOR_WAIRING;
         self.resultText=@"";
     }
     
     [self.speechEveluator stopListening];
-    [self.resultTextView resignFirstResponder];
+
     [self.srcTextView resignFirstResponder];
     self.startEvelutateBtn.enabled=YES;
     
@@ -151,10 +145,8 @@
 
 - (IBAction)cancelEBtnHandler:(id)sender {
     [self.speechEveluator cancel];
-    [self.resultTextView resignFirstResponder];
     [self.srcTextView resignFirstResponder];
     [self.popupView removeFromSuperview];
-    self.resultTextView.text = INDICATOR_BTN;
     self.resultText=@"";
     self.startEvelutateBtn.enabled=YES;
     
@@ -175,7 +167,7 @@
     if(errorCode && errorCode.errorCode!=0){
         self.isSessionResultAppear=NO;
         self.isSessionEnd=YES;
-        self.resultTextView.text =INDICATOR_BTN;
+    
         self.resultText=@"";
     }else{
         self.isSessionResultAppear=YES;
@@ -270,7 +262,7 @@
         }
         
         self.resultText=showText;
-        self.resultTextView.text = showText;
+        
         self.isSessionResultAppear=YES;
         self.isSessionEnd=YES;
         if(isLast){
@@ -295,9 +287,6 @@
     
 }
 
--(void)onISEResultXmlParserResult:(ISEResult*)result{
-    self.resultTextView.text=[result toString];
-}
 
 
 

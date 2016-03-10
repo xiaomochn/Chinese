@@ -18,7 +18,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UITextView *srcTextView;
-@property (weak, nonatomic) IBOutlet UITextView *resultTextView;
+
 
 
 
