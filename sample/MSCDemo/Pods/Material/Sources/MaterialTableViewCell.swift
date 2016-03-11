@@ -173,7 +173,7 @@ public class MaterialTableViewCell: UITableViewCell {
 	}
 	
 	/// Enables automatic shadowPath sizing.
-	public var shadowPathAutoSizeEnabled: Bool = false {
+	public var shadowPathAutoSizeEnabled: Bool = true {
 		didSet {
 			if shadowPathAutoSizeEnabled {
 				layoutShadowPath()
@@ -458,7 +458,7 @@ public class MaterialTableViewCell: UITableViewCell {
 			let d: CGFloat = 2 * f
 			let s: CGFloat = 1.05
 			
-			var t: CFTimeInterval = CFTimeInterval(1.5 * width / MaterialDevice.bounds.width)
+			var t: CFTimeInterval = CFTimeInterval(1.5 * width / MaterialDevice.width)
 			if 0.55 < t || 0.25 > t {
 				t = 0.55
 			}
@@ -480,7 +480,7 @@ public class MaterialTableViewCell: UITableViewCell {
 				}
 				pulseLayer.addAnimation(MaterialAnimation.scale(3 * d, duration: t), forKey: nil)
 				MaterialAnimation.delay(t) { [weak self] in
-					if nil != self && nil != self!.pulseColor && 0 < self!.pulseColorOpacity {
+					if nil != self?.pulseColor && 0 < self?.pulseColorOpacity {
 						MaterialAnimation.animateWithDuration(t, animations: {
 							pulseLayer.hidden = true
 						}) {
@@ -501,7 +501,7 @@ public class MaterialTableViewCell: UITableViewCell {
 	/// Executes the shrink animation for the pulse effect.
 	internal func shrinkAnimation() {
 		if pulseScale {
-			var t: CFTimeInterval = CFTimeInterval(1.5 * width / MaterialDevice.bounds.width)
+			var t: CFTimeInterval = CFTimeInterval(1.5 * width / MaterialDevice.width)
 			if 0.55 < t || 0.25 > t {
 				t = 0.55
 			}

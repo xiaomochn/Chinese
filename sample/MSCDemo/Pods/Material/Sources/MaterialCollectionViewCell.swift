@@ -33,6 +33,28 @@ import UIKit
 @objc(MaterialCollectionViewCell)
 public class MaterialCollectionViewCell : UICollectionViewCell {
 	/**
+	A CAShapeLayer used to manage elements that would be affected by
+	the clipToBounds property of the backing layer. For example, this
+	allows the dropshadow effect on the backing layer, while clipping
+	the image to a desired shape within the visualLayer.
+	*/
+	public private(set) lazy var visualLayer: CAShapeLayer = CAShapeLayer()
+	
+	/**
+	A base delegate reference used when subclassing MaterialView.
+	*/
+	public weak var delegate: MaterialDelegate?
+	
+	/// Sets whether the scaling animation should be used.
+	public lazy var pulseScale: Bool = true
+	
+	/// The opcaity value for the pulse animation.
+	public var pulseColorOpacity: CGFloat = 0.25
+	
+	/// The color of the pulse effect.
+	public var pulseColor: UIColor?
+	
+	/**
 	A property that manages an image for the visualLayer's contents
 	property. Images should not be set to the backing layer's contents
 	property to avoid conflicts when using clipsToBounds.
@@ -43,10 +65,62 @@ public class MaterialCollectionViewCell : UICollectionViewCell {
 		}
 	}
 	
-	/// Determines how content should be aligned within the visualLayer's bounds.
-	public var contentsGravity: MaterialGravity {
+	/**
+	Allows a relative subrectangle within the range of 0 to 1 to be
+	specified for the visualLayer's contents property. This allows
+	much greater flexibility than the contentsGravity property in
+	terms of how the image is cropped and stretched.
+	*/
+	public var contentsRect: CGRect {
+		get {
+			return visualLayer.contentsRect
+		}
+		set(value) {
+			visualLayer.contentsRect = value
+		}
+	}
+	
+	/**
+	A CGRect that defines a stretchable region inside the visualLayer
+	with a fixed border around the edge.
+	*/
+	public var contentsCenter: CGRect {
+		get {
+			return visualLayer.contentsCenter
+		}
+		set(value) {
+			visualLayer.contentsCenter = value
+		}
+	}
+	
+	/**
+	A floating point value that defines a ratio between the pixel
+	dimensions of the visualLayer's contents property and the size
+	of the view. By default, this value is set to the MaterialDevice.scale.
+	*/
+	public var contentsScale: CGFloat {
+		get {
+			return visualLayer.contentsScale
+		}
+		set(value) {
+			visualLayer.contentsScale = value
+		}
+	}
+	
+	/// A Preset for the contentsGravity property.
+	public var contentsGravityPreset: MaterialGravity {
 		didSet {
-			visualLayer.contentsGravity = MaterialGravityToString(contentsGravity)
+			contentsGravity = MaterialGravityToString(contentsGravityPreset)
+		}
+	}
+	
+	/// Determines how content should be aligned within the visualLayer's bounds.
+	public var contentsGravity: String {
+		get {
+			return visualLayer.contentsGravity
+		}
+		set(value) {
+			visualLayer.contentsGravity = value
 		}
 	}
 	
@@ -86,28 +160,6 @@ public class MaterialCollectionViewCell : UICollectionViewCell {
 			contentView.grid.spacing = value
 		}
 	}
-	
-	/**
-	A CAShapeLayer used to manage elements that would be affected by
-	the clipToBounds property of the backing layer. For example, this
-	allows the dropshadow effect on the backing layer, while clipping
-	the image to a desired shape within the visualLayer.
-	*/
-	public private(set) lazy var visualLayer: CAShapeLayer = CAShapeLayer()
-	
-	/**
-	A base delegate reference used when subclassing MaterialView.
-	*/
-	public weak var delegate: MaterialDelegate?
-	
-	/// Sets whether the scaling animation should be used.
-	public lazy var pulseScale: Bool = true
-	
-	/// The opcaity value for the pulse animation.
-	public var pulseColorOpacity: CGFloat = 0.25
-	
-	/// The color of the pulse effect.
-	public var pulseColor: UIColor?
 	
 	/**
 	This property is the same as clipsToBounds. It crops any of the view's
@@ -235,7 +287,7 @@ public class MaterialCollectionViewCell : UICollectionViewCell {
 	}
 	
 	/// Enables automatic shadowPath sizing.
-	public var shadowPathAutoSizeEnabled: Bool = false {
+	public var shadowPathAutoSizeEnabled: Bool = true {
 		didSet {
 			if shadowPathAutoSizeEnabled {
 				layoutShadowPath()
@@ -360,7 +412,7 @@ public class MaterialCollectionViewCell : UICollectionViewCell {
 		depth = .None
 		cornerRadiusPreset = .None
 		shape = .None
-		contentsGravity = .ResizeAspectFill
+		contentsGravityPreset = .ResizeAspectFill
 		super.init(coder: aDecoder)
 		prepareView()
 	}
@@ -375,7 +427,7 @@ public class MaterialCollectionViewCell : UICollectionViewCell {
 		depth = .None
 		cornerRadiusPreset = .None
 		shape = .None
-		contentsGravity = .ResizeAspectFill
+		contentsGravityPreset = .ResizeAspectFill
 		super.init(frame: frame)
 		prepareView()
 	}
@@ -562,7 +614,7 @@ public class MaterialCollectionViewCell : UICollectionViewCell {
 			let d: CGFloat = 2 * f
 			let s: CGFloat = 1.05
 			
-			var t: CFTimeInterval = CFTimeInterval(1.5 * width / MaterialDevice.bounds.width)
+			var t: CFTimeInterval = CFTimeInterval(1.5 * width / MaterialDevice.width)
 			if 0.55 < t || 0.25 > t {
 				t = 0.55
 			}
@@ -584,7 +636,7 @@ public class MaterialCollectionViewCell : UICollectionViewCell {
 				}
 				pulseLayer.addAnimation(MaterialAnimation.scale(3 * d, duration: t), forKey: nil)
 				MaterialAnimation.delay(t) { [weak self] in
-					if nil != self && nil != self!.pulseColor && 0 < self!.pulseColorOpacity {
+					if nil != self?.pulseColor && 0 < self?.pulseColorOpacity {
 						MaterialAnimation.animateWithDuration(t, animations: {
 							pulseLayer.hidden = true
 						}) {
@@ -605,7 +657,7 @@ public class MaterialCollectionViewCell : UICollectionViewCell {
 	/// Executes the shrink animation for the pulse effect.
 	internal func shrinkAnimation() {
 		if pulseScale {
-			var t: CFTimeInterval = CFTimeInterval(1.5 * width / MaterialDevice.bounds.width)
+			var t: CFTimeInterval = CFTimeInterval(1.5 * width / MaterialDevice.width)
 			if 0.55 < t || 0.25 > t {
 				t = 0.55
 			}

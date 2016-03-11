@@ -103,6 +103,12 @@ public protocol SideNavigationViewControllerDelegate {
 	SideNavigationViewController tap gesture executes.
 	*/
 	optional func sideNavigationViewDidTap(sideNavigationViewController: SideNavigationViewController, point: CGPoint, position: SideNavigationPosition)
+
+	/**
+	An optional delegation method that is fired when the
+	status bar is about to change display, hidden or not.
+	*/
+	optional func sideNavigationStatusBarHiddenState(sideNavigationViewController: SideNavigationViewController, hidden: Bool)
 }
 
 @objc(SideNavigationViewController)
@@ -117,13 +123,13 @@ public class SideNavigationViewController: UIViewController, UIGestureRecognizer
 	A UIPanGestureRecognizer property internally used for the
 	pan gesture.
 	*/
-	private var panGesture: UIPanGestureRecognizer?
+	internal private(set) var panGesture: UIPanGestureRecognizer?
 	
 	/**
 	A UITapGestureRecognizer property internally used for the 
 	tap gesture.
 	*/
-	private var tapGesture: UITapGestureRecognizer?
+	internal private(set) var tapGesture: UITapGestureRecognizer?
 	
 	/**
 	A CGFloat property that accesses the leftView threshold of
@@ -192,29 +198,13 @@ public class SideNavigationViewController: UIViewController, UIGestureRecognizer
 	A Boolean property that enables and disables the leftView from
 	opening and closing. Defaults to true.
 	*/
-	public var enabledLeftView: Bool = false {
-		didSet {
-			if enabledLeftView {
-				prepareGestures(panSelector: "handlePanGesture:", tapSelector: "handleTapGesture:")
-			} else if !enabledRightView {
-				removeGestures()
-			}
-		}
-	}
+	public var enabledLeftView: Bool = true
 	
 	/**
 	A Boolean property that enables and disables the rightView from
 	opening and closing. Defaults to true.
 	*/
-	public var enabledRightView: Bool = false {
-		didSet {
-			if enabledRightView {
-				prepareGestures(panSelector: "handlePanGesture:", tapSelector: "handleTapGesture:")
-			} else if !enabledLeftView {
-				removeGestures()
-			}
-		}
-	}
+	public var enabledRightView: Bool = true
 	
 	/**
 	A Boolean property that triggers the status bar to be hidden
@@ -597,6 +587,12 @@ public class SideNavigationViewController: UIViewController, UIGestureRecognizer
 		}
 	}
 	
+	/**
+	Detects the gesture recognizer being used.
+	- Parameter gestureRecognizer: A UIGestureRecognizer to detect.
+	- Parameter touch: The UITouch event.
+	- Returns: A Boolean of whether to continue the gesture or not.
+	*/
 	public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
 		if gestureRecognizer == panGesture {
 			return opened || isPointContainedWithinLeftViewThreshold(touch.locationInView(view)) || isPointContainedWithinRightViewThreshold(touch.locationInView(view))
@@ -721,7 +717,7 @@ public class SideNavigationViewController: UIViewController, UIGestureRecognizer
 		prepareRightView()
 		prepareLeftViewController()
 		prepareRightViewController()
-		enabled = true
+		prepareGestures()
 	}
 	
 	/// A method that prepares the mainViewController.
@@ -752,7 +748,6 @@ public class SideNavigationViewController: UIViewController, UIGestureRecognizer
 			leftView = MaterialView()
 			leftView!.frame = CGRectMake(0, 0, leftViewWidth, view.frame.height)
 			leftView!.backgroundColor = MaterialColor.clear
-			leftView!.shadowPathAutoSizeEnabled = true
 			view.addSubview(leftView!)
 			
 			leftView!.hidden = true
@@ -769,7 +764,6 @@ public class SideNavigationViewController: UIViewController, UIGestureRecognizer
 			rightView = MaterialView()
 			rightView!.frame = CGRectMake(0, 0, rightViewWidth, view.frame.height)
 			rightView!.backgroundColor = MaterialColor.clear
-			rightView!.shadowPathAutoSizeEnabled = true
 			view.addSubview(rightView!)
 			
 			rightView!.hidden = true
@@ -799,20 +793,16 @@ public class SideNavigationViewController: UIViewController, UIGestureRecognizer
 	/**
 	A method that prepares the gestures used within the 
 	SideNavigationViewController.
-	- Parameter panSelector: A Selector that is fired when the
-	pan gesture is recognized.
-	- Parameter tapSelector: A Selector that is fired when the
-	tap gesture is recognized.
 	*/
-	private func prepareGestures(panSelector panSelector: Selector, tapSelector: Selector) {
+	private func prepareGestures() {
 		if nil == panGesture {
-			panGesture = UIPanGestureRecognizer(target: self, action: panSelector)
+			panGesture = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
 			panGesture!.delegate = self
 			view.addGestureRecognizer(panGesture!)
 		}
 		
 		if nil == tapGesture {
-			tapGesture = UITapGestureRecognizer(target: self, action: tapSelector)
+			tapGesture = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
 			tapGesture!.cancelsTouchesInView = false
 			tapGesture!.delegate = self
 			view.addGestureRecognizer(tapGesture!)
@@ -843,13 +833,23 @@ public class SideNavigationViewController: UIViewController, UIGestureRecognizer
 	*/
 	private func toggleStatusBar(hide: Bool = false) {
 		if hideStatusBar {
-			// General alignment.
-			if .iPhone == MaterialDevice.type && MaterialDevice.landscape {
-				UIApplication.sharedApplication().statusBarHidden = true
-			} else {
-				UIApplication.sharedApplication().statusBarHidden = opened ? true : hide
-			}
+			userInteractionEnabled = false
+			let hidden: Bool = .iPhone == MaterialDevice.type && MaterialDevice.landscape || opened ? true : hide
+			UIView.animateWithDuration(NSTimeInterval(UINavigationControllerHideShowBarDuration),
+				animations: { [weak self] in
+					self?.setNeedsStatusBarAppearanceUpdate()
+					MaterialDevice.statusBarHidden = hidden
+				}) { [weak self] _ in
+					if false == self?.opened {
+						self?.userInteractionEnabled = true
+					}
+				}
+			delegate?.sideNavigationStatusBarHiddenState?(self, hidden: hidden)
 		}
+	}
+	
+	public override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+		return .Fade
 	}
 	
 	/**

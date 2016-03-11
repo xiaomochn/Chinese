@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DeformationButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ImagePickerSheetController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,7 +97,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0DB113166E42AE38E8B70EED3301F385</key>
+		<key>0C84E466CFF28C3C68A6DF4161A9B4B2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,7 +112,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1DCADFF04C62A69E22A270B689FB11CB</key>
+		<key>1D29E8C2A60D3BB04FB162A6A5817AD6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -118,16 +123,6 @@
 			<true/>
 		</dict>
 		<key>2AAAB9973850C35994DC04473435E1A3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4076AB210862780B396ECD21A4D7C488</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4D6DB68E850938095360C21590844F8F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,17 +147,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>73CADB88C35E1E3C22414052DB542D36</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF02B7DC5C7EC72EFD46AA7BF171A534</key>
+		<key>A5B43E46478F80DBE62D960C6014E9FA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AE345A61A56DAE18D43016B5B949E557</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0E5C2DDED15767A9F864C58896D12B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,7 +172,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DD5CDAF6D46C97DCF48D5A2BCAB608E0</key>
+		<key>D410D5CB43EE5DAE5FAC86E83F637165</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E824076B4A29A48FBEAAA48C114B4C23</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5F0297A8A41C0DFABF2F147DBF7870A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

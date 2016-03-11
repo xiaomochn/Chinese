@@ -130,7 +130,7 @@ public class NavigationBarViewController: StatusBarViewController {
 						dispatch_async(dispatch_get_main_queue()) { [unowned self] in
 							self.delegate?.navigationBarViewControllerDidCloseFloatingViewController?(self)
 						}
-					}
+				}
 			}
 			
 			if let v: UIViewController = value {
@@ -164,7 +164,7 @@ public class NavigationBarViewController: StatusBarViewController {
 						dispatch_async(dispatch_get_main_queue()) { [unowned self] in
 							self.delegate?.navigationBarViewControllerDidOpenFloatingViewController?(self)
 						}
-					}
+				}
 			}
 		}
 	}

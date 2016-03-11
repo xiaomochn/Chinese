@@ -56,7 +56,7 @@ NSString* const KCResultNotify3=@"停止评测，结果等待中...";
 
 //@property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, assign) CGFloat textViewHeight;
-@property (nonatomic, strong) UITextView *resultView;
+
 @property (nonatomic, strong) NSString* resultText;
 @property (nonatomic, assign) CGFloat resultViewHeight;
 
@@ -274,7 +274,7 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
                                                   object:nil];
 
     [self.iFlySpeechEvaluator cancel];
-    self.resultView.text =KCResultNotify1;
+  
 
     [super viewWillDisappear:animated];
 }
@@ -290,6 +290,8 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
 	[self.iFlySpeechEvaluator setParameter:@"" forKey:[IFlySpeechConstant PARAMS]];
     self.iseParams=[ISEParams fromUserDefaults];
     [self reloadCategoryText];
+    	self.popupView = [[PopupView alloc]initWithFrame:CGRectMake(100, 300, 0, 0)];
+    	self.popupView.ParentView = self.view;
 }
 
 -(void)reloadCategoryText{
@@ -380,7 +382,7 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
         buffer= [NSMutableData dataWithData:[str dataUsingEncoding:encoding]];
         NSLog(@" \nen buffer length: %lu",(unsigned long)[buffer length]);
     }
-    self.resultView.text =KCResultNotify2;
+   
     self.resultText=@"";
     [self.iFlySpeechEvaluator startListening:buffer params:nil];
     self.isSessionResultAppear=NO;
@@ -395,12 +397,12 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
 - (void)onBtnStop:(id)sender {
     
     if(!self.isSessionResultAppear &&  !self.isSessionEnd){
-        self.resultView.text =KCResultNotify3;
+       
         self.resultText=@"";
     }
     
 	[self.iFlySpeechEvaluator stopListening];
-    [self.resultView resignFirstResponder];
+  
    
     self.startBtn.enabled=YES;
 }
@@ -410,13 +412,13 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
  *
  *  @param sender cancelBtn
  */
-- (void)onBtnCancel:(id)sender {
+- (void)onBtnCancel{
 
 	[self.iFlySpeechEvaluator cancel];
-	[self.resultView resignFirstResponder];
+
    
 	[self.popupView removeFromSuperview];
-    self.resultView.text =KCResultNotify1;
+  
     self.resultText=@"";
     self.startBtn.enabled=YES;
 }
@@ -495,15 +497,24 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
  *  @param errorCode 错误描述类
  */
 - (void)onError:(IFlySpeechError *)errorCode {
+    [self onResultJson:NULL];
     if(errorCode && errorCode.errorCode!=0){
-        [self.popupView setText:[NSString stringWithFormat:@"错误码：%d %@",[errorCode errorCode],[errorCode errorDesc]]];
+        [self.popupView setText:[NSString stringWithFormat:@"%@",[ISEViewController descRe:[errorCode errorDesc]]]];
         [self.view addSubview:self.popupView];
         
     }
     
-    [self performSelectorOnMainThread:@selector(resetBtnSatus:) withObject:errorCode waitUntilDone:NO];
+//    [self performSelectorOnMainThread:@selector(resetBtnSatus:) withObject:errorCode waitUntilDone:NO];
 
     
+}
++(NSString*) descRe:(NSString*)fromStr{
+    const NSDictionary * dic=@{@"无评测语音":@"你好像没说话哦"};
+    NSString* result = dic[fromStr];
+    if (result) {
+        return result;
+    }
+    return fromStr;
 }
 
 -(void)resetBtnSatus:(IFlySpeechError *)errorCode{
@@ -547,17 +558,21 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
         }
         
         self.resultText=showText;
-		self.resultView.text = showText;
+	
         self.isSessionResultAppear=YES;
         self.isSessionEnd=YES;
+        [self onBtnParse:NULL];
         if(isLast){
+            [self onResultJson:NULL];
             [self.popupView setText:@"评测结束"];
             [self.view addSubview:self.popupView];
+              [self onBtnParse:NULL];
         }
 
 	}
     else{
         if(isLast){
+            [self onResultJson:NULL];
             [self.popupView setText:@"你好像没有说话哦"];
             [self.view addSubview:self.popupView];
         }
@@ -569,12 +584,15 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
 #pragma mark - ISEResultXmlParserDelegate
 
 -(void)onISEResultXmlParser:(NSXMLParser *)parser Error:(NSError*)error{
-    
+     [self onResultJson:NULL];
 }
 
 -(void)onISEResultXmlParserResult:(ISEResult*)result{
-    self.resultView.text=[result toString];
+  
+    [self onResultJson:[result toString]];
 }
+-(void) onResultJson:(NSString *)result{
 
+}
 
 @end
