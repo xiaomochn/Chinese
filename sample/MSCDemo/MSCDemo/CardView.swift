@@ -8,9 +8,11 @@
 
 import UIKit
 import Material
+//import LTMorphingLabel
 class CardView: UIView {
     var lable:UILabel!
     var title:UILabel!
+    var score:UILabel!
     var itemDate:PickItem{
         set(newValue){
             
@@ -74,10 +76,22 @@ class CardView: UIView {
         
          lable.textColor=MaterialColor.white
         lable.numberOfLines=0
-        self.addSubview(lable)
-        self.addSubview(title)
+        
         
 //       let a = arc4random_uniform( CardView.colors.count)
          self.backgroundColor = CardView.colors[Int(arc4random()) % (CardView.colors.count)]
+        
+        
+        var frameScore = self.frame
+        frameScore.size.height=100
+        frameScore.size.width=100
+        frameScore.origin=CGPoint(x: frameScore.size.width - 100, y: frameScore.size.height - 100)
+        score=UILabel(frame: frameScore)
+        score.textColor=MaterialColor.blue.base
+        score.text="3211分"
+        
+        self.addSubview(lable)
+        self.addSubview(title)
+        self.addSubview(score)
     }
 }

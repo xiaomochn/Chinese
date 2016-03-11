@@ -16,6 +16,7 @@ pod 'Material', '~> 1.0'
 pod 'ZLSwipeableViewSwift'
 pod 'Ji', '~> 1.2.0'
 pod 'DeformationButton'
+pod 'LTMorphingLabel'
 ## 主模块(必须)
 pod 'ShareSDK2'
 # Mob 公共库(必须) 如果同时集成SMSSDK iOS2.0:可看此注意事项：http://bbs.mob.com/thread-20051-1-1.html
