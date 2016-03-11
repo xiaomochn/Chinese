@@ -29,7 +29,7 @@ class HomeVC: ISEViewController {
         updateDatas()
     }
     func initView(){
-        let frame = CGRect(x: self.view.frame.size.width/2 - 40, y: self.view.frame.size.height - 60, width: 80, height: 40)
+        let frame = CGRect(x: self.view.frame.size.width/2 - 40, y: self.view.frame.size.height - 100, width: 80, height: 40)
         
         startButton = DeformationButton(frame: frame, withColor: MaterialColor.pink.base)
          self.view.addSubview(startButton)

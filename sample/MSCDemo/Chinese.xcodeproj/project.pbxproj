@@ -50,6 +50,8 @@
 		84C06D001AF9AD71002290E6 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C06CFF1AF9AD71002290E6 /* iflyMSC.framework */; };
 		AD045F591BB0EFB6004E3799 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD045F581BB0EFB6004E3799 /* libz.tbd */; };
 		AD8FF4A61BCCF2A000D276DD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8FF4A51BCCF2A000D276DD /* Images.xcassets */; };
+		CD0A26E21C92C6C500C59BF8 /* RootTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A26E11C92C6C500C59BF8 /* RootTabViewController.swift */; };
+		CD0A26E41C92CB8A00C59BF8 /* 11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A26E31C92CB8A00C59BF8 /* 11@2x.png */; };
 		CD28ABA91C8FDC8B00808902 /* logo57.png in Resources */ = {isa = PBXBuildFile; fileRef = CD28ABA81C8FDC8B00808902 /* logo57.png */; };
 		CD28ABAC1C8FEA7B00808902 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD28ABAB1C8FEA7B00808902 /* MainStoryboard.storyboard */; };
 		CD28ABAF1C8FED9C00808902 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28ABAE1C8FED9C00808902 /* HomeVC.swift */; };
@@ -152,6 +154,8 @@
 		AD8FF4A51BCCF2A000D276DD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ADF6E1041BA2B09B00EDD3C8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		C662AD7C2E47BDB13E93C04F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		CD0A26E11C92C6C500C59BF8 /* RootTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabViewController.swift; sourceTree = "<group>"; };
+		CD0A26E31C92CB8A00C59BF8 /* 11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11@2x.png"; sourceTree = "<group>"; };
 		CD28ABA81C8FDC8B00808902 /* logo57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo57.png; sourceTree = "<group>"; };
 		CD28ABAB1C8FEA7B00808902 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CD28ABAD1C8FED9C00808902 /* Chinese-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Chinese-Bridging-Header.h"; path = "MSCDemo/Chinese-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -417,9 +421,11 @@
 		CD28ABAA1C8FE93000808902 /* class */ = {
 			isa = PBXGroup;
 			children = (
+				CD3A371D1C92C64600556817 /* MyFa */,
 				CD28ABB21C90096200808902 /* Vendors */,
 				CD28ABB01C8FF9FB00808902 /* CardView.swift */,
 				CD28ABAE1C8FED9C00808902 /* HomeVC.swift */,
+				CD0A26E11C92C6C500C59BF8 /* RootTabViewController.swift */,
 			);
 			name = class;
 			sourceTree = "<group>";
@@ -430,6 +436,13 @@
 				CD28ABB71C9169E200808902 /* PickItem.swift */,
 			);
 			name = Vendors;
+			sourceTree = "<group>";
+		};
+		CD3A371D1C92C64600556817 /* MyFa */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MyFa;
 			sourceTree = "<group>";
 		};
 		E9706F27175F383E003B76FC = {
@@ -483,6 +496,7 @@
 				845FA0111AFC5186008447CE /* tools */,
 				529DD43E1AE8D6B700A13137 /* storyBoard */,
 				AD8FF4A51BCCF2A000D276DD /* Images.xcassets */,
+				CD0A26E31C92CB8A00C59BF8 /* 11@2x.png */,
 				E9706F3D175F383E003B76FC /* Supporting Files */,
 			);
 			path = MSCDemo;
@@ -562,6 +576,7 @@
 			files = (
 				AD8FF4A61BCCF2A000D276DD /* Images.xcassets in Resources */,
 				84A85DC01B4D0E780056929E /* bnf in Resources */,
+				CD0A26E41C92CB8A00C59BF8 /* 11@2x.png in Resources */,
 				CD28ABA91C8FDC8B00808902 /* logo57.png in Resources */,
 				E9706F41175F383E003B76FC /* InfoPlist.strings in Resources */,
 				84A85DC51B4D14660056929E /* Main.storyboard in Resources */,
@@ -654,6 +669,7 @@
 				845FA0521AFC5521008447CE /* RootViewController.m in Sources */,
 				84A85D911B4CFDA80056929E /* ISEParams.m in Sources */,
 				84A85D901B4CFDA80056929E /* ISEConfigViewController.m in Sources */,
+				CD0A26E21C92C6C500C59BF8 /* RootTabViewController.swift in Sources */,
 				84A85D9F1B4CFDA80056929E /* ISEResultWord.m in Sources */,
 				84A85D9A1B4CFDA80056929E /* ISEResultReadSyllable.m in Sources */,
 				845FA02E1AFC5186008447CE /* ISRDataHelper.m in Sources */,

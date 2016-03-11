@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--我喜欢-->
         <scene sceneID="8px-0J-xaq">
             <objects>
-                <tableViewController id="pPp-dQ-Y05" sceneMemberID="viewController">
+                <tableViewController title="我喜欢" id="pPp-dQ-Y05" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nZ7-cC-s0X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,52 +28,53 @@
                             <outlet property="delegate" destination="pPp-dQ-Y05" id="xgm-Fg-bq6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="hm2-dM-f5w"/>
+                    <navigationItem key="navigationItem" title="我喜欢" id="hm2-dM-f5w"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oiy-A2-ef1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-341.5" y="-545.5"/>
+            <point key="canvasLocation" x="155.5" y="-572.5"/>
         </scene>
         <!--收藏-->
         <scene sceneID="55N-4f-0KV">
             <objects>
                 <navigationController title="收藏" id="ZMH-vK-EAP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="y5c-pa-PLJ"/>
+                    <tabBarItem key="tabBarItem" title="中国话" image="11" id="y5c-pa-PLJ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OwZ-Wo-WKF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="pPp-dQ-Y05" kind="relationship" relationship="rootViewController" id="LXd-cV-JzU"/>
+                        <segue destination="KM9-1a-iBI" kind="relationship" relationship="rootViewController" id="8vo-yK-gdW"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGN-bV-U0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-843.5" y="-529.5"/>
+            <point key="canvasLocation" x="-618.5" y="299.5"/>
         </scene>
-        <!--sss-->
+        <!--我喜欢-->
         <scene sceneID="20p-qz-ql4">
             <objects>
-                <navigationController title="sss" id="i7x-eX-XEw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="UHz-Bn-MP4"/>
+                <navigationController title="我喜欢" id="i7x-eX-XEw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我喜欢" image="44" id="UHz-Bn-MP4"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Viv-h9-hh6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="KM9-1a-iBI" kind="relationship" relationship="rootViewController" id="1rY-fb-Ruk"/>
+                        <segue destination="pPp-dQ-Y05" kind="relationship" relationship="rootViewController" id="JvY-hl-8jt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="en8-CZ-RKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-648" y="244"/>
+            <point key="canvasLocation" x="-610.5" y="-572.5"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Root Tab View Controller-->
         <scene sceneID="apy-B5-DLK">
             <objects>
-                <tabBarController id="Mso-Oe-yIV" sceneMemberID="viewController">
+                <tabBarController id="Mso-Oe-yIV" customClass="RootTabViewController" customModule="Chinese" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="EUT-nV-Wq6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -88,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="-1396" y="260"/>
         </scene>
-        <!--HomeVC-->
+        <!--中国话-->
         <scene sceneID="JKA-5h-wAy">
             <objects>
-                <viewController storyboardIdentifier="HomeVC" title="HomeVC" id="KM9-1a-iBI" customClass="HomeVC" customModule="Chinese" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" title="中国话" id="KM9-1a-iBI" customClass="HomeVC" customModule="Chinese" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="45o-nd-1J6"/>
                         <viewControllerLayoutGuide type="bottom" id="ren-9m-RMI"/>
@@ -100,7 +101,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LW7-QE-YER" customClass="ZLSwipeableView" customModule="ZLSwipeableViewSwift">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LW7-QE-YER" customClass="ZLSwipeableView" customModule="ZLSwipeableViewSwift">
                                 <rect key="frame" x="15" y="79" width="345" height="488"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OnS-ZZ-UgC">
@@ -127,7 +128,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="Bkl-6g-mgb"/>
+                    <navigationItem key="navigationItem" title="中国话" id="Bkl-6g-mgb"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="swipeableView" destination="LW7-QE-YER" id="Tlr-pY-2ov"/>
@@ -135,7 +136,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xFq-b1-Ifl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="584.5" y="95.5"/>
+            <point key="canvasLocation" x="166.5" y="299.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="11" width="25" height="25"/>
+        <image name="44" width="25" height="25"/>
+    </resources>
 </document>
