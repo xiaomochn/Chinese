@@ -15,4 +15,5 @@
 @property (nonatomic, strong) ISEParams *iseParams;
 - (void)start:(NSString *) str;
 - (void)onBtnCancel;
+- (void)onBtnStop;
 @end

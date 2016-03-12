@@ -97,7 +97,7 @@ class HomeVC: ISEViewController {
             swipeableView.allowedDirection = .None
         }else{
             swipeableView.allowedDirection = .All
-            self.onBtnCancel()
+            self.onBtnStop()
         }
         
         
@@ -120,14 +120,18 @@ class HomeVC: ISEViewController {
         }
         return datas
     }
-    func onResultJson(result:NSString? = nil)
+
+    func onResultStr(result:String? = nil)
     {
+        
+        let card = (swipeableView.topView()) as! CardView
         if (result == nil){
             self.startButton.isLoading = false
             swipeableView.allowedDirection = .All
+//            card.score.text=result.total_score
             return
         }
-        let card = (swipeableView.topView()) as! CardView
+
         //        UIView.animateWithDuration(3) { () -> Void in
         //            let attributeString = NSMutableAttributedString(string: "你是我的按时发生的发生 1asdfasdfs")
         //            attributeString.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(),range: NSMakeRange(0, 7))
@@ -136,6 +140,12 @@ class HomeVC: ISEViewController {
         //        }
         
     }
-    
+    func getTopCard()->CardView{
+        return self.swipeableView.topView() as! CardView
+    }
+//    func onResults(results:NSData,isLast:ObjCBool){
+//        let a = isLast;
+//        
+//    }
     
 }

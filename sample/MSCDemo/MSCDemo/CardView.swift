@@ -59,19 +59,19 @@ class CardView: UIView {
         
         
        
-        var frame = self.frame
+        var frame = CGRect()
         frame.size.height=40
-        frame.size.width=frame.size.width - 30
-        frame.origin=CGPoint(x: frame.origin.x+15, y: frame.origin.y+15)
+        frame.size.width=self.frame.size.width - 30
+        frame.origin=CGPoint(x: self.frame.origin.x+15, y: self.frame.origin.y+15)
         title=UILabel(frame: frame)
         title.textColor=MaterialColor.blue.base
         
         
        
-        var frameContent = self.frame
-        frameContent.size.height=frameContent.size.height-frame.size.height - 30
-        frameContent.size.width=frameContent.size.width - 30
-        frameContent.origin=CGPoint(x: frameContent.origin.x+15, y: frameContent.origin.y+frame.size.height+30)
+        var frameContent = CGRect()
+        frameContent.size.height=self.frame.size.height-frame.size.height - 30
+        frameContent.size.width=self.frame.size.width - 30
+        frameContent.origin=CGPoint(x: self.frame.origin.x+15, y: self.frame.origin.y+frame.size.height+30)
         lable=UILabel(frame: frameContent)
         
          lable.textColor=MaterialColor.white
@@ -82,12 +82,12 @@ class CardView: UIView {
          self.backgroundColor = CardView.colors[Int(arc4random()) % (CardView.colors.count)]
         
         
-        var frameScore = self.frame
+        var frameScore = CGRect()
         frameScore.size.height=100
         frameScore.size.width=100
-        frameScore.origin=CGPoint(x: frameScore.size.width - 100, y: frameScore.size.height - 100)
+        frameScore.origin=CGPoint(x: self.frame.size.width - 100, y: self.frame.size.height - 100)
         score=UILabel(frame: frameScore)
-        score.textColor=MaterialColor.blue.base
+        score.textColor=MaterialColor.red.base
         score.text="3211分"
         
         self.addSubview(lable)

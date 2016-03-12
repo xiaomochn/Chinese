@@ -11,12 +11,15 @@
 #import "PopupView.h"
 #import "ISEParams.h"
 #import "IFlyMSC/IFlyMSC.h"
-
+#import "Chinese-Swift.h"
 #import "ISEResult.h"
 #import "ISEResultXmlParser.h"
 #import "Definition.h"
-
-
+#import "ISEResultTools.h"
+#import "ISEResultPhone.h"
+#import "ISEResultSyll.h"
+#import "ISEResultWord.h"
+#import "ISEResultSentence.h"
 
 #define _DEMO_UI_MARGIN            5
 #define _DEMO_UI_PADDING          10
@@ -64,7 +67,7 @@ NSString* const KCResultNotify3=@"停止评测，结果等待中...";
 @property (nonatomic, strong) UIButton *stopBtn;
 @property (nonatomic, strong) UIButton *parseBtn;
 @property (nonatomic, strong) UIButton *cancelBtn;
-
+@property (nonatomic) int tempCount;
 @property (nonatomic, strong) PopupView *popupView;
 @property (nonatomic, strong) ISESettingViewController *settingViewCtrl;
 @property (nonatomic, strong) IFlySpeechEvaluator *iFlySpeechEvaluator;
@@ -295,15 +298,12 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
 }
 
 -(void)reloadCategoryText{
-    
     [self.iFlySpeechEvaluator setParameter:self.iseParams.bos forKey:[IFlySpeechConstant VAD_BOS]];
     [self.iFlySpeechEvaluator setParameter:self.iseParams.eos forKey:[IFlySpeechConstant VAD_EOS]];
     [self.iFlySpeechEvaluator setParameter:self.iseParams.category forKey:[IFlySpeechConstant ISE_CATEGORY]];
     [self.iFlySpeechEvaluator setParameter:self.iseParams.language forKey:[IFlySpeechConstant LANGUAGE]];
     [self.iFlySpeechEvaluator setParameter:self.iseParams.rstLevel forKey:[IFlySpeechConstant ISE_RESULT_LEVEL]];
     [self.iFlySpeechEvaluator setParameter:self.iseParams.timeout forKey:[IFlySpeechConstant SPEECH_TIMEOUT]];
-    
-   
 }
 
 
@@ -357,7 +357,7 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
     
     [self.iFlySpeechEvaluator setParameter:@"16000" forKey:[IFlySpeechConstant SAMPLE_RATE]];
     [self.iFlySpeechEvaluator setParameter:@"utf-8" forKey:[IFlySpeechConstant TEXT_ENCODING]];
-    [self.iFlySpeechEvaluator setParameter:@"xml" forKey:[IFlySpeechConstant ISE_RESULT_TYPE]];
+    [self.iFlySpeechEvaluator setParameter:@"plain" forKey:[IFlySpeechConstant ISE_RESULT_TYPE]];
 //    [self.iFlySpeechEvaluator setParameter:@"json" forKey:[IFlySpeechConstant RESULT_TYPE]];
     [self.iFlySpeechEvaluator setParameter:@"eva.pcm" forKey:[IFlySpeechConstant ISE_AUDIO_PATH]];
     
@@ -394,7 +394,7 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
  *
  *  @param sender stopBtn
  */
-- (void)onBtnStop:(id)sender {
+- (void)onBtnStop {
     
     if(!self.isSessionResultAppear &&  !self.isSessionEnd){
        
@@ -497,7 +497,7 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
  *  @param errorCode 错误描述类
  */
 - (void)onError:(IFlySpeechError *)errorCode {
-    [self onResultJson:NULL];
+    [self onResultStr:NULL];
     if(errorCode && errorCode.errorCode!=0){
         [self.popupView setText:[NSString stringWithFormat:@"%@",[ISEViewController descRe:[errorCode errorDesc]]]];
         [self.view addSubview:self.popupView];
@@ -539,6 +539,7 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
  *  @param isLast  -[out] 是否最后一条结果
  */
 - (void)onResults:(NSData *)results isLast:(BOOL)isLast{
+    NSLog(@"isLast:%d",isLast);
 	if (results) {
 		NSString *showText = @"";
         
@@ -566,7 +567,7 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
             [self onResultJson:NULL];
             [self.popupView setText:@"评测结束"];
             [self.view addSubview:self.popupView];
-              [self onBtnParse:NULL];
+            [self onBtnParse:NULL];
         }
 
 	}
@@ -584,15 +585,132 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
 #pragma mark - ISEResultXmlParserDelegate
 
 -(void)onISEResultXmlParser:(NSXMLParser *)parser Error:(NSError*)error{
-     [self onResultJson:NULL];
+     [self onResultStr:NULL];
 }
 
 -(void)onISEResultXmlParserResult:(ISEResult*)result{
-  
-    [self onResultJson:[result toString]];
+    [self onResultStr:[result toString]];
+    [self onResultJson:result];
 }
--(void) onResultJson:(NSString *)result{
+-(void) onResultJson:(ISEResult *)result{
+    if (result.total_score != 0) {
+        CardView *card = [self getTopCard];
+        card.lable.attributedText=[self formatDetailsForLanguageCN:result.sentences string:card.lable.text];
+//        if (self.tempCount!=0) {
+            int score = card.contenText.length*400/result.time_len*10.0 ;
+        
+                score =result.total_score*20*10*score;
+                card.score.text=[NSString stringWithFormat:@"%d",score];
 
+        
+       
+//        0.0025
+        
+    }else {
+       [self.popupView setText:@"你读的太少了"];
+    }
+}
++(UIColor*)getErrColor{
+
+}
++(UIColor*)getTrueColor{
+    
+}
+
+- (NSMutableAttributedString*)formatDetailsForLanguageCN:(NSArray*) sentences string:(NSString *)string{
+    
+    NSMutableAttributedString * attribute = [[NSMutableAttributedString alloc] initWithString:string];
+
+    //            attributeString.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(),range: NSMakeRange(0, 7))
+    NSString* buffer =[[NSString alloc] init];
+    if (!sentences) {
+        return nil;
+    }
+    
+    NSRange range=NSMakeRange(0, string.length);
+    self.tempCount=0;
+    for (ISEResultSentence* sentence in sentences ) {
+        
+        if (nil == sentence.words) {
+            continue;
+        }
+        
+        for (ISEResultWord* word in sentence.words) {
+            NSString* wContent=[ISEResultTools translateContentInfo:word.content];
+            if ([KCIFlyResultNoise isEqualToString:wContent] || [KCIFlyResultMute isEqualToString:wContent]){
+                continue;
+            }
+            buffer=[buffer stringByAppendingFormat:@"\n词语[%@] %@  时长：%d",wContent,word.symbol,word.time_len];
+            
+            if (!word.sylls) {
+                continue;
+            }
+            
+            for (ISEResultSyll* syll in word.sylls) {
+                NSString* syContent=[ISEResultTools translateContentInfo:[syll content]];
+                if ([KCIFlyResultNoise isEqualToString:syContent] || [KCIFlyResultMute isEqualToString:syContent]){
+                    continue;
+                }
+                
+                buffer=[buffer stringByAppendingFormat:@"\n└音节[%@] %@  时长：%d",syContent,syll.symbol,syll.time_len];
+                if (!syll.phones) {
+                    continue;
+                }
+                if (range.location>string.length) {
+                    continue;
+                }
+//                息：0（正确），16（漏读），32（增读），64（回读），128（替换）
+                BOOL tag = false;// 结束本循环
+                for (ISEResultPhone* phone in syll.phones) {
+                    
+                    switch (phone.dp_message) {
+                        case 0:
+                            break;
+                        case 16:
+                            range.location++;
+                            range.length--;
+                            tag=true;
+                            break;
+                        case 32:
+                            
+                        case 64:
+                            
+                        case 128:
+                        {
+                            NSRange tempRange = [string  rangeOfString:syContent   options:NSCaseInsensitiveSearch range:range];
+                            
+                            [attribute addAttribute:NSForegroundColorAttributeName value: [UIColor blackColor] range:tempRange];
+                            range.location++;
+                            range.length--;
+                            tag=true;
+                        }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if(tag){
+                    continue;
+                }
+               
+                
+                NSRange tempRange = [string  rangeOfString:syContent   options:NSCaseInsensitiveSearch range:range];
+                range.location++;
+                range.length--;
+                [attribute addAttribute:NSForegroundColorAttributeName value: [UIColor greenColor] range:tempRange];
+                self.tempCount++;
+            }
+            buffer=[buffer stringByAppendingString:@"\n"];
+        }
+    }
+    return attribute;
+    
+}
+-(void) onResultStr:(NSString *)result{
+    
+}
+-(CardView *)getTopCard{
+    return NULL;
 }
 
 @end
