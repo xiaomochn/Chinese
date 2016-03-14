@@ -600,7 +600,7 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
             int score = card.contenText.length*400/result.time_len*10.0 ;
         
                 score =result.total_score*20*10*score;
-                card.score.text=[NSString stringWithFormat:@"%d",score];
+                card.scoreText=[NSString stringWithFormat:@"%d",score];
 
         
        

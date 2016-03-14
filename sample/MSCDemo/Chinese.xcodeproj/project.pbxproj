@@ -57,6 +57,10 @@
 		CD28ABAF1C8FED9C00808902 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28ABAE1C8FED9C00808902 /* HomeVC.swift */; };
 		CD28ABB11C8FF9FB00808902 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28ABB01C8FF9FB00808902 /* CardView.swift */; };
 		CD28ABB81C9169E200808902 /* PickItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28ABB71C9169E200808902 /* PickItem.swift */; };
+		CD86E85D1C9681A300263088 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E85C1C9681A300263088 /* GlobalVariables.swift */; };
+		CD86E85F1C9682F600263088 /* MyLoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E85E1C9682F600263088 /* MyLoveViewController.swift */; };
+		CD86E8611C96835600263088 /* MyLoveViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E8601C96835600263088 /* MyLoveViewCell.swift */; };
+		CD86E8631C968F0200263088 /* DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E8621C968F0200263088 /* DataCenter.swift */; };
 		E92E12F619F88BF2000AA6DC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92E12F519F88BF2000AA6DC /* CoreTelephony.framework */; };
 		E92E12F819F88BFD000AA6DC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92E12F719F88BFD000AA6DC /* CoreLocation.framework */; };
 		E931A1601760555A0077E502 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E931A15F176055590077E502 /* QuartzCore.framework */; };
@@ -162,6 +166,10 @@
 		CD28ABAE1C8FED9C00808902 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeVC.swift; path = class/HomeVC.swift; sourceTree = "<group>"; };
 		CD28ABB01C8FF9FB00808902 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		CD28ABB71C9169E200808902 /* PickItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickItem.swift; sourceTree = "<group>"; };
+		CD86E85C1C9681A300263088 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		CD86E85E1C9682F600263088 /* MyLoveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLoveViewController.swift; sourceTree = "<group>"; };
+		CD86E8601C96835600263088 /* MyLoveViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLoveViewCell.swift; sourceTree = "<group>"; };
+		CD86E8621C968F0200263088 /* DataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCenter.swift; sourceTree = "<group>"; };
 		E92A0DB6198885D500D563C9 /* Chinese-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Chinese-Prefix.pch"; sourceTree = "<group>"; };
 		E92E12F519F88BF2000AA6DC /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E92E12F719F88BFD000AA6DC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -421,6 +429,8 @@
 		CD28ABAA1C8FE93000808902 /* class */ = {
 			isa = PBXGroup;
 			children = (
+				CD86E8621C968F0200263088 /* DataCenter.swift */,
+				CD86E85C1C9681A300263088 /* GlobalVariables.swift */,
 				CD3A371D1C92C64600556817 /* MyFa */,
 				CD28ABB21C90096200808902 /* Vendors */,
 				CD28ABB01C8FF9FB00808902 /* CardView.swift */,
@@ -441,6 +451,8 @@
 		CD3A371D1C92C64600556817 /* MyFa */ = {
 			isa = PBXGroup;
 			children = (
+				CD86E8601C96835600263088 /* MyLoveViewCell.swift */,
+				CD86E85E1C9682F600263088 /* MyLoveViewController.swift */,
 			);
 			name = MyFa;
 			sourceTree = "<group>";
@@ -661,7 +673,9 @@
 				84A85D981B4CFDA80056929E /* ISEResultPhone.m in Sources */,
 				845FA0301AFC5186008447CE /* UnderstandViewController.m in Sources */,
 				845FA0331AFC5186008447CE /* TTSUIController.m in Sources */,
+				CD86E8631C968F0200263088 /* DataCenter.swift in Sources */,
 				CD28ABB81C9169E200808902 /* PickItem.swift in Sources */,
+				CD86E8611C96835600263088 /* MyLoveViewCell.swift in Sources */,
 				84A85D9D1B4CFDA80056929E /* ISEResultSyll.m in Sources */,
 				845FA0321AFC5186008447CE /* TTSConfigViewController.m in Sources */,
 				84A85D971B4CFDA80056929E /* ISEResultFinal.m in Sources */,
@@ -670,12 +684,14 @@
 				84A85D911B4CFDA80056929E /* ISEParams.m in Sources */,
 				84A85D901B4CFDA80056929E /* ISEConfigViewController.m in Sources */,
 				CD0A26E21C92C6C500C59BF8 /* RootTabViewController.swift in Sources */,
+				CD86E85F1C9682F600263088 /* MyLoveViewController.swift in Sources */,
 				84A85D9F1B4CFDA80056929E /* ISEResultWord.m in Sources */,
 				84A85D9A1B4CFDA80056929E /* ISEResultReadSyllable.m in Sources */,
 				845FA02E1AFC5186008447CE /* ISRDataHelper.m in Sources */,
 				84A85D921B4CFDA80056929E /* ISESettingViewController.m in Sources */,
 				845FA0511AFC5521008447CE /* MSCAppDelegate.m in Sources */,
 				845FA0351AFC5186008447CE /* AlertView.m in Sources */,
+				CD86E85D1C9681A300263088 /* GlobalVariables.swift in Sources */,
 				845FA0311AFC5186008447CE /* TTSConfig.m in Sources */,
 				84A85D991B4CFDA80056929E /* ISEResultReadSentence.m in Sources */,
 				84A85DA01B4CFDA80056929E /* ISEResultXmlParser.m in Sources */,

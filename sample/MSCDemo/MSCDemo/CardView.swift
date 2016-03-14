@@ -13,13 +13,30 @@ class CardView: UIView {
     var lable:UILabel!
     var title:UILabel!
     var score:UILabel!
+    var pageNum:Int!
+    var scoreText:Int{
+        set(newValue){
+        itemDatet.score = "\(newValue)"
+            score.text = "\(newValue)分"
+        }
+        get{// 再改
+            return 1
+        }
+    }
+    var itemDatet:PickItem!
     var itemDate:PickItem{
         set(newValue){
             
             lable.text=newValue.content.stringByReplacingOccurrencesOfString("\r", withString: "").stringByReplacingOccurrencesOfString("\n", withString: "").stringByReplacingOccurrencesOfString(" ", withString: "").stringByReplacingOccurrencesOfString("　", withString: "")
+            lable.sizeToFit()
             title.text=newValue.title
+            if newValue.score != ""{
+                score.text = "\(newValue.score)分"
+                score.sizeToFit()
+            }
+            itemDatet = newValue
         }
-        get{return self.itemDate}
+        get{return self.itemDatet}
     }
     var contenText:String{
         get{
@@ -45,7 +62,7 @@ class CardView: UIView {
         setup()
     }
 
-   static let colors = [MaterialColor.red.base,MaterialColor.pink.base,MaterialColor.purple.base,MaterialColor.deepPurple.base,MaterialColor.indigo.base,MaterialColor.blue.base,MaterialColor.lightBlue.base,MaterialColor.cyan.base,MaterialColor.teal.base,MaterialColor.green.base,MaterialColor.lightGreen.base,MaterialColor.lime.base,MaterialColor.yellow.base,MaterialColor.amber.base,MaterialColor.orange.base,MaterialColor.brown.base,MaterialColor.grey.base,MaterialColor.blueGrey.base]
+   static let colors = [MaterialColor.red.base,MaterialColor.pink.base,MaterialColor.purple.base,MaterialColor.deepPurple.base,MaterialColor.indigo.base,MaterialColor.blue.base,MaterialColor.lightBlue.base,MaterialColor.cyan.base,MaterialColor.teal.base,MaterialColor.green.base,MaterialColor.lightGreen.base,MaterialColor.lime.base,MaterialColor.amber.base,MaterialColor.orange.base,MaterialColor.brown.base,MaterialColor.blueGrey.base]
     func setup() {
         // Shadow
         layer.shadowColor = UIColor.blackColor().CGColor
@@ -64,7 +81,7 @@ class CardView: UIView {
         frame.size.width=self.frame.size.width - 30
         frame.origin=CGPoint(x: self.frame.origin.x+15, y: self.frame.origin.y+15)
         title=UILabel(frame: frame)
-        title.textColor=MaterialColor.blue.base
+        title.textColor=MaterialColor.grey.base
         
         
        
@@ -83,12 +100,14 @@ class CardView: UIView {
         
         
         var frameScore = CGRect()
-        frameScore.size.height=100
-        frameScore.size.width=100
-        frameScore.origin=CGPoint(x: self.frame.size.width - 100, y: self.frame.size.height - 100)
+        frameScore.size.height=80
+        frameScore.size.width=80
+        frameScore.origin=CGPoint(x: self.frame.size.width - 90, y: self.frame.size.height - 90)
         score=UILabel(frame: frameScore)
-        score.textColor=MaterialColor.red.base
-        score.text="3211分"
+        score.textColor=MaterialColor.yellow.base
+        var font =  score.font
+       
+        score.text="1002分"
         
         self.addSubview(lable)
         self.addSubview(title)

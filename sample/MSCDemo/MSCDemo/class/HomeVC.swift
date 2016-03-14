@@ -28,6 +28,14 @@ class HomeVC: ISEViewController {
         initView()
         updateDatas()
     }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let item = DataCenter.getDataCenter().removePickItemValue("item")
+        if item != nil{
+            (self.swipeableView.topView() as! CardView).itemDate=item!
+
+        }
+    }
     func initView(){
         let frame = CGRect(x: self.view.frame.size.width/2 - 40, y: self.view.frame.size.height - 100, width: 80, height: 40)
         
@@ -79,6 +87,7 @@ class HomeVC: ISEViewController {
         cardView.lable.text="正在加载中"
         if self.datas.count > currentIndex{
             cardView.itemDate=self.datas[currentIndex]
+            cardView.pageNum=currentIndex
             currentIndex++
         }
         if (self.datas.count < (self.currentIndex + 10)){
@@ -87,7 +96,20 @@ class HomeVC: ISEViewController {
         return cardView
     }
     func didSwip(direction:Direction){
+        if direction != Direction.Right{
+            return
+        }
         
+        let array=NSMutableArray(contentsOfFile: GlobalVariables.getMyLovePlistPath())
+//        getTopCard().title.text
+        let content = "\(getTopCard().title.text! as String)\(GlobalVariables.splitTag)\(getTopCard().lable.text!as String)\(GlobalVariables.splitTag)\(getTopCard().score.text! as String)"
+        if array?.containsObject(content)==false
+        {
+            array?.insertObject(content, atIndex: 0)
+            let issuccess = array?.writeToFile(GlobalVariables.getMyLovePlistPath(), atomically: true)
+            print(issuccess)
+        }
+        let array1=NSMutableArray(contentsOfFile: GlobalVariables.getMyLovePlistPath())
     }
     
     @IBAction func beginClick(sender: AnyObject) {
@@ -132,12 +154,7 @@ class HomeVC: ISEViewController {
             return
         }
 
-        //        UIView.animateWithDuration(3) { () -> Void in
-        //            let attributeString = NSMutableAttributedString(string: "你是我的按时发生的发生 1asdfasdfs")
-        //            attributeString.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(),range: NSMakeRange(0, 7))
-        //
-        //            card.lable.attributedText = attributeString
-        //        }
+    
         
     }
     func getTopCard()->CardView{
