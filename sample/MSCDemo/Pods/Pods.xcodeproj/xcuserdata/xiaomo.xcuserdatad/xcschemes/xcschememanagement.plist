@@ -39,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>LTMorphingLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>M13ProgressSuite.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -97,7 +102,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0C84E466CFF28C3C68A6DF4161A9B4B2</key>
+		<key>0DCBD6C869DCC15AF62D43471CB4592C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,6 +132,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2B07F88B75BFAA311518B74A8793F16B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>33BA0C5412D830A9117387689878D180</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5BBB34170986C897E8931C1768FD6EE3</key>
 		<dict>
 			<key>primary</key>
@@ -138,6 +153,11 @@
 			<true/>
 		</dict>
 		<key>698A37611B31C6E9B1C5AEC735CECE70</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6E8D54C5348F16D9FC6E1C3DDCEFAFAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,32 +177,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AE345A61A56DAE18D43016B5B949E557</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B0E5C2DDED15767A9F864C58896D12B1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>C4F1DB440B42642636E376448A196E87</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D410D5CB43EE5DAE5FAC86E83F637165</key>
+		<key>E1A88B5747DBAE2E9A2AC88C0FE8A884</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E824076B4A29A48FBEAAA48C114B4C23</key>
+		<key>E6DBD4AB89CF7170DFB36D0D2C79000C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F5F0297A8A41C0DFABF2F147DBF7870A</key>
+		<key>F65BE630307FFE711177489F657B7591</key>
 		<dict>
 			<key>primary</key>
 			<true/>

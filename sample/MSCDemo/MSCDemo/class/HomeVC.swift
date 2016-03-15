@@ -27,13 +27,17 @@ class HomeVC: ISEViewController {
         super.viewDidLoad()
         initView()
         updateDatas()
+        currentPage=loadLocalPage()
+    }
+   
+    func loadLocalPage()->Int{
+        return 3
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         let item = DataCenter.getDataCenter().removePickItemValue("item")
         if item != nil{
             (self.swipeableView.topView() as! CardView).itemDate=item!
-
         }
     }
     func initView(){
@@ -61,6 +65,9 @@ class HomeVC: ISEViewController {
         }
         isLoading = true
         self.currentPage++
+        if self.currentIndex >= 43{
+        self.currentIndex = 1
+        }
         let tempPage = self.currentPage
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             
@@ -102,7 +109,7 @@ class HomeVC: ISEViewController {
         
         let array=NSMutableArray(contentsOfFile: GlobalVariables.getMyLovePlistPath())
 //        getTopCard().title.text
-        let content = "\(getTopCard().title.text! as String)\(GlobalVariables.splitTag)\(getTopCard().lable.text!as String)\(GlobalVariables.splitTag)\(getTopCard().score.text! as String)"
+        let content = "\(getTopCard().title.text! as String)\(GlobalVariables.splitTag)\(getTopCard().lable.text!as String)\(GlobalVariables.splitTag)\(getTopCard().itemDate.score)"
         if array?.containsObject(content)==false
         {
             array?.insertObject(content, atIndex: 0)

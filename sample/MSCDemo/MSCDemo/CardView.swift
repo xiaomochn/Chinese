@@ -8,11 +8,11 @@
 
 import UIKit
 import Material
-//import LTMorphingLabel
+import LTMorphingLabel
 class CardView: UIView {
     var lable:UILabel!
     var title:UILabel!
-    var score:UILabel!
+    var score:LTMorphingLabel!
     var pageNum:Int!
     var scoreText:Int{
         set(newValue){
@@ -32,7 +32,8 @@ class CardView: UIView {
             title.text=newValue.title
             if newValue.score != ""{
                 score.text = "\(newValue.score)分"
-                score.sizeToFit()
+            }else{
+                score.text = ""
             }
             itemDatet = newValue
         }
@@ -61,7 +62,7 @@ class CardView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
-
+    static let loadingStr="扁担宽板凳长,扁担想绑在板凳上,板凳不让扁担绑在板凳上,扁担偏要绑在板凳上,板凳偏偏不让扁担绑在那板凳上,到底扁担宽还是板凳长"
    static let colors = [MaterialColor.red.base,MaterialColor.pink.base,MaterialColor.purple.base,MaterialColor.deepPurple.base,MaterialColor.indigo.base,MaterialColor.blue.base,MaterialColor.lightBlue.base,MaterialColor.cyan.base,MaterialColor.teal.base,MaterialColor.green.base,MaterialColor.lightGreen.base,MaterialColor.lime.base,MaterialColor.amber.base,MaterialColor.orange.base,MaterialColor.brown.base,MaterialColor.blueGrey.base]
     func setup() {
         // Shadow
@@ -93,6 +94,7 @@ class CardView: UIView {
         
          lable.textColor=MaterialColor.white
         lable.numberOfLines=0
+        lable.text=CardView.loadingStr
         
         
 //       let a = arc4random_uniform( CardView.colors.count)
@@ -102,12 +104,13 @@ class CardView: UIView {
         var frameScore = CGRect()
         frameScore.size.height=80
         frameScore.size.width=80
-        frameScore.origin=CGPoint(x: self.frame.size.width - 90, y: self.frame.size.height - 90)
-        score=UILabel(frame: frameScore)
+        frameScore.origin=CGPoint(x: self.frame.size.width - 80, y: self.frame.size.height - 80)
+        score=LTMorphingLabel(frame: frameScore)
+        score.morphingEffect = .Sparkle
         score.textColor=MaterialColor.yellow.base
         var font =  score.font
        
-        score.text="1002分"
+        score.text=""
         
         self.addSubview(lable)
         self.addSubview(title)

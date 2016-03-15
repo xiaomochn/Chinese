@@ -10,6 +10,7 @@ PODS:
   - Ji/Ji (1.2.0):
     - Ji/Ji-libxml
   - Ji/Ji-libxml (1.2.0)
+  - LTMorphingLabel (0.1.1)
   - M13ProgressSuite (1.2.7)
   - Material (1.36.0)
   - MJRefresh (3.1.0)
@@ -62,6 +63,7 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - ImagePickerSheetController (~> 0.9.1)
   - Ji (~> 1.2.0)
+  - LTMorphingLabel
   - M13ProgressSuite
   - Material (~> 1.0)
   - MJRefresh
@@ -90,6 +92,7 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
   Ji: ddebb22f9ac445db6e884b66f78ea74fb135fdb7
+  LTMorphingLabel: dfc40f43a0dcf81867b1f29431f34e861a5f1b35
   M13ProgressSuite: 03d194af6359da440641ba758aed5a18b0386a86
   Material: 3162fe1199c62599e977f08515389a4380aaf2ba
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4

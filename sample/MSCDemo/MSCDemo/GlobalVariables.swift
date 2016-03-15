@@ -26,6 +26,21 @@ class GlobalVariables: NSObject {
         
         return plistPath
     }
+    /** 收藏列表文件名**/
+    class func getUserPage()-> String{
+        var myloveplistPath1=NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) ;
+        let documentsDirectory: AnyObject = myloveplistPath1[0]
+        let plistPath=documentsDirectory.stringByAppendingPathComponent("page")
+        let array=NSMutableDictionary(contentsOfFile: plistPath)
+        if array==nil{
+            let arraytemp=NSArray()
+            
+            arraytemp.writeToFile(plistPath, atomically: true)
+           
+        }
+        
+        return plistPath
+    }
     /** 用户信息文件名**/
     class func getUserPath()-> String{
         var myloveplistPath1=NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) ;
