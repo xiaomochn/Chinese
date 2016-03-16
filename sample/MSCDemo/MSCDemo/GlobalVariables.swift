@@ -26,14 +26,14 @@ class GlobalVariables: NSObject {
         
         return plistPath
     }
-    /** 收藏列表文件名**/
+    /** 记录当前页数**/
     class func getUserPage()-> String{
         var myloveplistPath1=NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) ;
         let documentsDirectory: AnyObject = myloveplistPath1[0]
         let plistPath=documentsDirectory.stringByAppendingPathComponent("page")
         let array=NSMutableDictionary(contentsOfFile: plistPath)
         if array==nil{
-            let arraytemp=NSArray()
+            let arraytemp=NSMutableDictionary()
             
             arraytemp.writeToFile(plistPath, atomically: true)
            

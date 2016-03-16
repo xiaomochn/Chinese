@@ -62,7 +62,7 @@ class CardView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
-    static let loadingStr="扁担宽板凳长,扁担想绑在板凳上,板凳不让扁担绑在板凳上,扁担偏要绑在板凳上,板凳偏偏不让扁担绑在那板凳上,到底扁担宽还是板凳长"
+    static let loadingStr="扁担宽板凳长,扁担想绑在板凳上,板凳不让扁担绑在板凳上,扁担偏要绑在板凳上,板凳偏偏不让扁担绑在那板凳上,到底扁担宽还   正在加载中..."
    static let colors = [MaterialColor.red.base,MaterialColor.pink.base,MaterialColor.purple.base,MaterialColor.deepPurple.base,MaterialColor.indigo.base,MaterialColor.blue.base,MaterialColor.lightBlue.base,MaterialColor.cyan.base,MaterialColor.teal.base,MaterialColor.green.base,MaterialColor.lightGreen.base,MaterialColor.lime.base,MaterialColor.amber.base,MaterialColor.orange.base,MaterialColor.brown.base,MaterialColor.blueGrey.base]
     func setup() {
         // Shadow
@@ -108,7 +108,7 @@ class CardView: UIView {
         score=LTMorphingLabel(frame: frameScore)
         score.morphingEffect = .Sparkle
         score.textColor=MaterialColor.yellow.base
-        var font =  score.font
+        score.font = UIFont.init(name: score.font.fontName, size: CGFloat(20))
        
         score.text=""
         

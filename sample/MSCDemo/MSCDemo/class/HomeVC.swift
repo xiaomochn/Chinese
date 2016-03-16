@@ -17,7 +17,7 @@ class HomeVC: ISEViewController {
     var currentPage = 0
     var datas:[PickItem] = [PickItem]()
     var isLoading = false
-    
+    var localPageF = 1
 
     var startButton:DeformationButton!
     //    http://www.haha365.com/rkl/index_2.htm
@@ -25,13 +25,24 @@ class HomeVC: ISEViewController {
     @IBOutlet weak var swipeableView: ZLSwipeableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentPage=loadLocalPage()
+        localPageF = currentPage+1
         initView()
         updateDatas()
-        currentPage=loadLocalPage()
-    }
+        }
    
     func loadLocalPage()->Int{
-        return 3
+       
+        let dic = NSMutableDictionary(contentsOfFile: GlobalVariables.getUserPage())
+        if dic==nil || dic!["page"]  == nil
+        {return 0}
+        return dic!["page"] as! Int
+    }
+    func saveLocalPage(){
+        
+        let dic = NSMutableDictionary(contentsOfFile: GlobalVariables.getUserPage())
+        dic?.setObject(currentPage, forKey: "page")
+        dic?.writeToFile(GlobalVariables.getUserPage(), atomically: true)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -49,7 +60,7 @@ class HomeVC: ISEViewController {
         startButton.forDisplayButton.setTitleColor(MaterialColor.blue.base, forState: UIControlState.Normal)
         startButton.addTarget(self, action: "beginClick:", forControlEvents: UIControlEvents.TouchUpInside)
 //       startButton.forDisplayButton.setTitleEdgeInsets
-        
+        swipeableView.allowedDirection = .None
         swipeableView.nextView = {
             return self.nextCardView()
         }
@@ -67,7 +78,9 @@ class HomeVC: ISEViewController {
         self.currentPage++
         if self.currentIndex >= 43{
         self.currentIndex = 1
+            
         }
+        saveLocalPage()
         let tempPage = self.currentPage
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             
@@ -75,11 +88,11 @@ class HomeVC: ISEViewController {
             self.datas.appendContentsOf(self.loadPage(tempPage))
             self.isLoading = false;
             dispatch_async(dispatch_get_main_queue(), {
-                if(tempPage == 1 ){
+                self.swipeableView.allowedDirection = .All
+                if(tempPage == self.localPageF ){
                     self.swipeableView.discardViews()
                     self.swipeableView.loadViews()
                 }
-                
                 //这里返回主线程，写需要主线程执行的代码
             })
         })
@@ -91,7 +104,7 @@ class HomeVC: ISEViewController {
     }
     func nextCardView() -> UIView? {
         let cardView = CardView(frame: swipeableView.bounds)
-        cardView.lable.text="正在加载中"
+//        cardView.lable.text="正在加载中"
         if self.datas.count > currentIndex{
             cardView.itemDate=self.datas[currentIndex]
             cardView.pageNum=currentIndex
