@@ -137,14 +137,14 @@ class HomeVC: ISEViewController {
     
     @IBAction func beginClick(sender: AnyObject) {
         let card = (swipeableView.topView()) as! CardView
-//        if self.startButton.isLoading{
-//            self.start(card.contenText)
-//            swipeableView.allowedDirection = .None
-//        }else{
-//            swipeableView.allowedDirection = .All
-//            self.onBtnStop()
-//        }
-        self.startSynHandler(card.contenText)
+        if self.startButton.isLoading{
+            self.start(card.contenText)
+            swipeableView.allowedDirection = .None
+        }else{
+            swipeableView.allowedDirection = .All
+            self.onBtnStop()
+        }
+        
         
     }
     
