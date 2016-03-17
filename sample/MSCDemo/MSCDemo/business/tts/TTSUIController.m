@@ -34,35 +34,35 @@
 {
      [super viewDidLoad];
 
-     UIBarButtonItem *spaceBtnItem = [[ UIBarButtonItem alloc]     //键盘
-                                     initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                     target:nil action:nil];
-    
-     UIBarButtonItem *hideBtnItem = [[UIBarButtonItem alloc]
-                                      initWithTitle:@"隐藏" style:UIBarButtonItemStylePlain
-                                      target:self action:@selector(onKeyBoardDown:)];
-    
-    [hideBtnItem setTintColor:[UIColor whiteColor]];
-    UIToolbar *toolbar = [[ UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-    toolbar.barStyle = UIBarStyleBlackTranslucent;
-    NSArray *array = [NSArray arrayWithObjects:spaceBtnItem,hideBtnItem, nil];
-    [toolbar setItems:array];
-    
-    _textView.inputAccessoryView = toolbar;
-    _textView.layer.borderWidth = 0.5f;
-    _textView.layer.borderColor = [[UIColor whiteColor] CGColor];
-    [_textView.layer setCornerRadius:7.0f];
-
-
-    CGFloat posY = self.textView.frame.origin.y+self.textView.frame.size.height/6;
-    _popUpView = [[PopupView alloc] initWithFrame:CGRectMake(100, posY, 0, 0) withParentView:self.view];
-
-    _inidicateView =  [[AlertView alloc]initWithFrame:CGRectMake(100, posY, 0, 0)];
-    _inidicateView.ParentView = self.view;
-    [self.view addSubview:_inidicateView];
-    [_inidicateView hide];
-    
-    
+//     UIBarButtonItem *spaceBtnItem = [[ UIBarButtonItem alloc]     //键盘
+//                                     initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+//                                     target:nil action:nil];
+//    
+//     UIBarButtonItem *hideBtnItem = [[UIBarButtonItem alloc]
+//                                      initWithTitle:@"隐藏" style:UIBarButtonItemStylePlain
+//                                      target:self action:@selector(onKeyBoardDown:)];
+//    
+//    [hideBtnItem setTintColor:[UIColor whiteColor]];
+//    UIToolbar *toolbar = [[ UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+//    toolbar.barStyle = UIBarStyleBlackTranslucent;
+//    NSArray *array = [NSArray arrayWithObjects:spaceBtnItem,hideBtnItem, nil];
+//    [toolbar setItems:array];
+//    
+//    _textView.inputAccessoryView = toolbar;
+//    _textView.layer.borderWidth = 0.5f;
+//    _textView.layer.borderColor = [[UIColor whiteColor] CGColor];
+//    [_textView.layer setCornerRadius:7.0f];
+//
+//
+//    CGFloat posY = self.textView.frame.origin.y+self.textView.frame.size.height/6;
+//    _popUpView = [[PopupView alloc] initWithFrame:CGRectMake(100, posY, 0, 0) withParentView:self.view];
+//
+//    _inidicateView =  [[AlertView alloc]initWithFrame:CGRectMake(100, posY, 0, 0)];
+//    _inidicateView.ParentView = self.view;
+//    [self.view addSubview:_inidicateView];
+//    [_inidicateView hide];
+//    
+//    
 
     
     
@@ -70,9 +70,9 @@
 
 //     使用-(void)synthesize:(NSString *)text toUri:(NSString*)uri接口时， uri 需设置为保存音频的完整路径
 //     若uri设为nil,则默认的音频保存在library/cache下
-    NSString *prePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    //uri合成路径设置
-    _uriPath = [NSString stringWithFormat:@"%@/%@",prePath,@"uri.pcm"];
+//    NSString *prePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    //uri合成路径设置
+//    _uriPath = [NSString stringWithFormat:@"%@/%@",prePath,@"uri.pcm"];
     //pcm播放器初始化
     _audioPlayer = [[PcmPlayer alloc] init];
     
@@ -139,23 +139,42 @@
 */
 
 
-#pragma mark - 事件响应函数
+
 /**
- 隐藏键盘
- ****/
-- (void)onKeyBoardDown:(id) sender
-{
-    [_textView resignFirstResponder];
+// 开始通用合成
+// ****/
+//- (IBAction)startSynBtnHandler:(id)sender {
+//
+//    if ([_textView.text isEqualToString:@""]) {
+//        [_popUpView showText:@"无效的文本信息"];
+//        return;
+//    }
+//    
+//    if (_audioPlayer != nil && _audioPlayer.isPlaying == YES) {
+//        [_audioPlayer stop];
+//    }
+//    
+//    _synType = NomalType;
+//    
+//    self.hasError = NO;
+//    [NSThread sleepForTimeInterval:0.05];
+//    
+//    [_inidicateView setText: @"正在缓冲..."];
+//    [_inidicateView show];
+//    
+//    [_popUpView removeFromSuperview];
+//    self.isCanceled = NO;
+//
+//    _iFlySpeechSynthesizer.delegate = self;
+//    [_iFlySpeechSynthesizer startSpeaking:_textView.text];
+//    if (_iFlySpeechSynthesizer.isSpeaking) {
+//        _state = Playing;
+//    }
+//}
+- (void)startSynHandler:(NSString *)str {
     
-}
-
-/**
- 开始通用合成
- ****/
-- (IBAction)startSynBtnHandler:(id)sender {
-
-    if ([_textView.text isEqualToString:@""]) {
-        [_popUpView showText:@"无效的文本信息"];
+    if ([str isEqualToString:@""]) {
+//        [_popUpView showText:@"无效的文本信息"];
         return;
     }
     
@@ -173,50 +192,50 @@
     
     [_popUpView removeFromSuperview];
     self.isCanceled = NO;
-
+    
     _iFlySpeechSynthesizer.delegate = self;
-    [_iFlySpeechSynthesizer startSpeaking:_textView.text];
+//    [_iFlySpeechSynthesizer startSpeaking:_textView.text];
     if (_iFlySpeechSynthesizer.isSpeaking) {
         _state = Playing;
     }
 }
 
-/**
- 开始uri合成
- ****/
-- (IBAction)uriSynthesizeBtnHandler:(id)sender {
-    
-    if ([_textView.text isEqualToString:@""]) {
-        [_popUpView showText:@"无效的文本信息"];
-        return;
-    }
-    
-    if (_audioPlayer != nil && _audioPlayer.isPlaying == YES) {
-        [_audioPlayer stop];
-    }
-    
-    _synType = UriType;
-    
-    self.hasError = NO;
-    
-    [NSThread sleepForTimeInterval:0.05];
-
-    
-    [_inidicateView setText: @"正在缓冲..."];
-    [_inidicateView show];
-    
-    [_popUpView removeFromSuperview];
-    
-    self.isCanceled = NO;
-    
-    _iFlySpeechSynthesizer.delegate = self;
-    
-    [_iFlySpeechSynthesizer synthesize:_textView.text toUri:_uriPath];
-    if (_iFlySpeechSynthesizer.isSpeaking) {
-        _state = Playing;
-    }
-}
-
+///**
+// 开始uri合成
+// ****/
+//- (IBAction)uriSynthesizeBtnHandler:(id)sender {
+//    
+//    if ([_textView.text isEqualToString:@""]) {
+//        [_popUpView showText:@"无效的文本信息"];
+//        return;
+//    }
+//    
+//    if (_audioPlayer != nil && _audioPlayer.isPlaying == YES) {
+//        [_audioPlayer stop];
+//    }
+//    
+//    _synType = UriType;
+//    
+//    self.hasError = NO;
+//    
+//    [NSThread sleepForTimeInterval:0.05];
+//
+//    
+//    [_inidicateView setText: @"正在缓冲..."];
+//    [_inidicateView show];
+//    
+//    [_popUpView removeFromSuperview];
+//    
+//    self.isCanceled = NO;
+//    
+//    _iFlySpeechSynthesizer.delegate = self;
+//    
+//    [_iFlySpeechSynthesizer synthesize:_textView.text toUri:_uriPath];
+//    if (_iFlySpeechSynthesizer.isSpeaking) {
+//        _state = Playing;
+//    }
+//}
+//
 
 
 /**
@@ -256,7 +275,7 @@
 
 
 - (IBAction)clearBtnHandler:(id)sender {
-    [_textView setText:@""];
+//    [_textView setText:@""];
 }
 
 
@@ -268,17 +287,17 @@
  对通用合成方式有效，
  对uri合成无效
  ****/
-- (void)onSpeakBegin
-{
-    [_inidicateView hide];
-    self.isCanceled = NO;
-    if (_state  != Playing) {
-        [_popUpView showText:@"开始播放"];
-    }
-
-    
-    _state = Playing;
-}
+//- (void)onSpeakBegin
+//{
+//    [_inidicateView hide];
+//    self.isCanceled = NO;
+//    if (_state  != Playing) {
+//        [_popUpView showText:@"开始播放"];
+//    }
+//
+//    
+//    _state = Playing;
+//}
 
 
 
@@ -291,10 +310,10 @@
  对通用合成方式有效，
  对uri合成无效
  ****/
-- (void)onBufferProgress:(int) progress message:(NSString *)msg
-{
-    NSLog(@"buffer progress %2d%%. msg: %@.", progress, msg);
-}
+//- (void)onBufferProgress:(int) progress message:(NSString *)msg
+//{
+//    NSLog(@"buffer progress %2d%%. msg: %@.", progress, msg);
+//}
 
 
 
@@ -308,10 +327,10 @@
  对通用合成方式有效，
  对uri合成无效
  ****/
-- (void)onSpeakProgress:(int) progress
-{
-    NSLog(@"speak progress %2d%%.", progress);
-}
+//- (void)onSpeakProgress:(int) progress
+//{
+//    NSLog(@"speak progress %2d%%.", progress);
+//}
 
 
 /**
@@ -347,39 +366,39 @@
 
  对uri合成添加播放的功能
  ****/
-- (void)onCompleted:(IFlySpeechError *) error
-{
-    
-    if (error.errorCode != 0) {
-        [_inidicateView hide];
-        [_popUpView showText:[NSString stringWithFormat:@"错误码:%d",error.errorCode]];
-        return;
-    }
-    NSString *text ;
-    if (self.isCanceled) {
-        text = @"合成已取消";
-    }else if (error.errorCode == 0) {
-        text = @"合成结束";
-    }else {
-        text = [NSString stringWithFormat:@"发生错误：%d %@",error.errorCode,error.errorDesc];
-        self.hasError = YES;
-        NSLog(@"%@",text);
-    }
-    
-    [_inidicateView hide];
-    [_popUpView showText:text];
-    
-    _state = NotStart;
-    
-    if (_synType == UriType) {//Uri合成类型
-        
-        NSFileManager *fm = [NSFileManager defaultManager];
-        if ([fm fileExistsAtPath:_uriPath]) {
-            [self playUriAudio];//播放合成的音频
-        }
-    }
-}
-
+//- (void)onCompleted:(IFlySpeechError *) error
+//{
+//    
+//    if (error.errorCode != 0) {
+//        [_inidicateView hide];
+//        [_popUpView showText:[NSString stringWithFormat:@"错误码:%d",error.errorCode]];
+//        return;
+//    }
+//    NSString *text ;
+//    if (self.isCanceled) {
+//        text = @"合成已取消";
+//    }else if (error.errorCode == 0) {
+//        text = @"合成结束";
+//    }else {
+//        text = [NSString stringWithFormat:@"发生错误：%d %@",error.errorCode,error.errorDesc];
+//        self.hasError = YES;
+//        NSLog(@"%@",text);
+//    }
+//    
+//    [_inidicateView hide];
+//    [_popUpView showText:text];
+//    
+//    _state = NotStart;
+//    
+//    if (_synType == UriType) {//Uri合成类型
+//        
+//        NSFileManager *fm = [NSFileManager defaultManager];
+//        if ([fm fileExistsAtPath:_uriPath]) {
+//            [self playUriAudio];//播放合成的音频
+//        }
+//    }
+//}
+//
 
 
 
@@ -440,16 +459,16 @@
 
 
 #pragma mark - 播放uri合成音频
-
-- (void)playUriAudio
-{
-    TTSConfig *instance = [TTSConfig sharedInstance];
-    [_popUpView showText:@"uri合成完毕，即将开始播放"];
-    NSError *error = [[NSError alloc] init];
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
-    _audioPlayer = [[PcmPlayer alloc] initWithFilePath:_uriPath sampleRate:[instance.sampleRate integerValue]];
-    [_audioPlayer play];
-    
-}
+//
+//- (void)playUriAudio
+//{
+//    TTSConfig *instance = [TTSConfig sharedInstance];
+//    [_popUpView showText:@"uri合成完毕，即将开始播放"];
+//    NSError *error = [[NSError alloc] init];
+//    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+//    _audioPlayer = [[PcmPlayer alloc] initWithFilePath:_uriPath sampleRate:[instance.sampleRate integerValue]];
+//    [_audioPlayer play];
+//    
+//}
 
 @end

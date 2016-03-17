@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TTSUIController.h"
 @class ISEParams;//评测
 
-@interface ISEViewController : UIViewController
+@interface ISEViewController : TTSUIController
 
 @property (nonatomic, strong) ISEParams *iseParams;
 - (void)start:(NSString *) str;

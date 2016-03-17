@@ -36,13 +36,12 @@ typedef NS_OPTIONS(NSInteger, Status) {
 @property (nonatomic, strong) PopupView *popUpView;
 @property (nonatomic, strong) AlertView *inidicateView;
 
-@property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (weak, nonatomic) IBOutlet UIButton *startSynthesizeBtn;
-@property (weak, nonatomic) IBOutlet UIButton *cancelSynthesizeBtn;
-@property (weak, nonatomic) IBOutlet UIButton *uriSynthesizeBtn;
-@property (weak, nonatomic) IBOutlet UIButton *clearTextBtn;
-@property (weak, nonatomic) IBOutlet UIButton *pauseSynthesizeBtn;
-@property (weak, nonatomic) IBOutlet UIButton *resumeSynthesizeBtn;
+//@property (weak, nonatomic) IBOutlet UIButton *startSynthesizeBtn;
+//@property (weak, nonatomic) IBOutlet UIButton *cancelSynthesizeBtn;
+//@property (weak, nonatomic) IBOutlet UIButton *uriSynthesizeBtn;
+//@property (weak, nonatomic) IBOutlet UIButton *clearTextBtn;
+//@property (weak, nonatomic) IBOutlet UIButton *pauseSynthesizeBtn;
+//@property (weak, nonatomic) IBOutlet UIButton *resumeSynthesizeBtn;
 
 
 @property (nonatomic, assign) BOOL isCanceled;
@@ -55,5 +54,5 @@ typedef NS_OPTIONS(NSInteger, Status) {
 
 @property (nonatomic, assign) Status state;
 @property (nonatomic, assign) SynthesizeType synType;
-
+-(void)startSynHandler:(NSString *)str;
 @end

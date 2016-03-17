@@ -622,7 +622,7 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
     NSMutableAttributedString * attribute = [[NSMutableAttributedString alloc] initWithString:string];
 
     //            attributeString.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(),range: NSMakeRange(0, 7))
-    NSString* buffer =[[NSString alloc] init];
+   
     if (!sentences) {
         return nil;
     }
@@ -640,8 +640,6 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
             if ([KCIFlyResultNoise isEqualToString:wContent] || [KCIFlyResultMute isEqualToString:wContent]){
                 continue;
             }
-            buffer=[buffer stringByAppendingFormat:@"\n词语[%@] %@  时长：%d",wContent,word.symbol,word.time_len];
-            
             if (!word.sylls) {
                 continue;
             }
@@ -652,7 +650,6 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
                     continue;
                 }
                 
-                buffer=[buffer stringByAppendingFormat:@"\n└音节[%@] %@  时长：%d",syContent,syll.symbol,syll.time_len];
                 if (!syll.phones) {
                     continue;
                 }
@@ -700,7 +697,7 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
                 [attribute addAttribute:NSForegroundColorAttributeName value: [UIColor greenColor] range:tempRange];
                 self.tempCount++;
             }
-            buffer=[buffer stringByAppendingString:@"\n"];
+           
         }
     }
     return attribute;

@@ -57,7 +57,7 @@ class HomeVC: ISEViewController {
         startButton = DeformationButton(frame: frame, withColor: MaterialColor.pink.base)
          self.view.addSubview(startButton)
         startButton.forDisplayButton.setTitle("开始", forState: UIControlState.Normal)
-        startButton.forDisplayButton.setTitleColor(MaterialColor.blue.base, forState: UIControlState.Normal)
+        startButton.forDisplayButton.setTitleColor(MaterialColor.white, forState: UIControlState.Normal)
         startButton.addTarget(self, action: "beginClick:", forControlEvents: UIControlEvents.TouchUpInside)
 //       startButton.forDisplayButton.setTitleEdgeInsets
         swipeableView.allowedDirection = .None
@@ -88,7 +88,10 @@ class HomeVC: ISEViewController {
             self.datas.appendContentsOf(self.loadPage(tempPage))
             self.isLoading = false;
             dispatch_async(dispatch_get_main_queue(), {
-                self.swipeableView.allowedDirection = .All
+                if self.datas.count > 0{
+                     self.swipeableView.allowedDirection = .All
+                }
+               
                 if(tempPage == self.localPageF ){
                     self.swipeableView.discardViews()
                     self.swipeableView.loadViews()
@@ -134,14 +137,14 @@ class HomeVC: ISEViewController {
     
     @IBAction func beginClick(sender: AnyObject) {
         let card = (swipeableView.topView()) as! CardView
-        if self.startButton.isLoading{
-            self.start(card.contenText)
-            swipeableView.allowedDirection = .None
-        }else{
-            swipeableView.allowedDirection = .All
-            self.onBtnStop()
-        }
-        
+//        if self.startButton.isLoading{
+//            self.start(card.contenText)
+//            swipeableView.allowedDirection = .None
+//        }else{
+//            swipeableView.allowedDirection = .All
+//            self.onBtnStop()
+//        }
+        self.startSynHandler(card.contenText)
         
     }
     
