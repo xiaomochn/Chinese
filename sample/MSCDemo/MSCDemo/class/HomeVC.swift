@@ -91,8 +91,7 @@ class HomeVC: ISEViewController {
                 if self.datas.count > 0{
                      self.swipeableView.allowedDirection = .All
                 }
-               
-                if(tempPage == self.localPageF ){
+                if(tempPage == self.localPageF){
                     self.swipeableView.discardViews()
                     self.swipeableView.loadViews()
                 }
@@ -132,7 +131,7 @@ class HomeVC: ISEViewController {
             let issuccess = array?.writeToFile(GlobalVariables.getMyLovePlistPath(), atomically: true)
             print(issuccess)
         }
-        let array1=NSMutableArray(contentsOfFile: GlobalVariables.getMyLovePlistPath())
+       
     }
     
     @IBAction func beginClick(sender: AnyObject) {
