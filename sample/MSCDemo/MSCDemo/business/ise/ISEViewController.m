@@ -597,10 +597,10 @@ static NSString *LocalizedEvaString(NSString *key, NSString *comment) {
         CardView *card = [self getTopCard];
         card.lable.attributedText=[self formatDetailsForLanguageCN:result.sentences string:card.lable.text];
 //        if (self.tempCount!=0) {
-            int score = card.contenText.length*400/result.time_len*10.0 ;
+            float score = (card.contenText.length*400.0)/(result.time_len*10.0) ;
         
-                score =result.total_score*20*10*score;
-                card.scoreText=[NSString stringWithFormat:@"%d",score];
+                score =result.total_score*20*50*score;
+                card.scoreText=score;
 
         
        

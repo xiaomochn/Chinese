@@ -16,7 +16,8 @@ class CardView: UIView {
     var pageNum:Int!
     var scoreText:Int{
         set(newValue){
-        itemDatet.score = "\(newValue)"
+           
+        itemDate.score = "\(newValue)"
             score.text = "\(newValue)分"
         }
         get{// 再改
@@ -83,7 +84,7 @@ class CardView: UIView {
         frame.origin=CGPoint(x: self.frame.origin.x+15, y: self.frame.origin.y+15)
         title=UILabel(frame: frame)
         title.textColor=MaterialColor.grey.base
-        
+        title.text=" "
         
        
         var frameContent = CGRect()
@@ -94,8 +95,7 @@ class CardView: UIView {
         
          lable.textColor=MaterialColor.white
         lable.numberOfLines=0
-        lable.text=CardView.loadingStr
-        
+       
         
 //       let a = arc4random_uniform( CardView.colors.count)
          self.backgroundColor = CardView.colors[Int(arc4random()) % (CardView.colors.count)]
@@ -110,10 +110,13 @@ class CardView: UIView {
         score.textColor=MaterialColor.yellow.base
         score.font = UIFont.init(name: score.font.fontName, size: CGFloat(20))
        
-        score.text=""
+        score.text=" "
         
         self.addSubview(lable)
         self.addSubview(title)
         self.addSubview(score)
+        self.itemDate=PickItem(title: " ", content: CardView.loadingStr)
+        lable.text=CardView.loadingStr
+        
     }
 }

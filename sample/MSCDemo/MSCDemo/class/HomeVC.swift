@@ -76,9 +76,9 @@ class HomeVC: ISEViewController {
         }
         isLoading = true
         self.currentPage++
-        if self.currentIndex >= 43{
-        self.currentIndex = 1
-            
+        if self.currentPage >= 43{
+        self.currentPage = 1
+            self.localPageF = 1
         }
         saveLocalPage()
         let tempPage = self.currentPage
@@ -94,6 +94,7 @@ class HomeVC: ISEViewController {
                 if(tempPage == self.localPageF){
                     self.swipeableView.discardViews()
                     self.swipeableView.loadViews()
+                    self.tempCartC=self.getTopCard()
                 }
                 //这里返回主线程，写需要主线程执行的代码
             })
@@ -117,14 +118,21 @@ class HomeVC: ISEViewController {
         }
         return cardView
     }
+    var tempCart:CardView!
+    var tempCartC:CardView!
     func didSwip(direction:Direction){
+        
+        tempCart = tempCartC
+        tempCartC = getTopCard()
         if direction != Direction.Right{
             return
         }
-        
+        if tempCart==nil{
+            return
+        }
         let array=NSMutableArray(contentsOfFile: GlobalVariables.getMyLovePlistPath())
 //        getTopCard().title.text
-        let content = "\(getTopCard().title.text! as String)\(GlobalVariables.splitTag)\(getTopCard().lable.text!as String)\(GlobalVariables.splitTag)\(getTopCard().itemDate.score)"
+        let content = "\(tempCart.title.text! as String)\(GlobalVariables.splitTag)\(tempCart.lable.text!as String)\(GlobalVariables.splitTag)\(tempCart.itemDate.score)"
         if array?.containsObject(content)==false
         {
             array?.insertObject(content, atIndex: 0)
