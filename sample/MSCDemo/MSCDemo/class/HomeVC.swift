@@ -106,7 +106,8 @@ class HomeVC: ISEViewController {
         // Dispose of any resources that can be recreated.
     }
     func nextCardView() -> UIView? {
-        let cardView = CardView(frame: swipeableView.bounds)
+        
+        let cardView = CardView(frame: swipeableView.frame)
 //        cardView.lable.text="正在加载中"
         if self.datas.count > currentIndex{
             cardView.itemDate=self.datas[currentIndex]
@@ -165,6 +166,8 @@ class HomeVC: ISEViewController {
             jiDoc.xPath("head")
             let htmlresult = jiDoc.xPath("//body/div[@id=\"main\"]/div[@class=\"content\"]/div[@class=\"left\"]/div[@class=\"r_c\"]/div[@class=\"cat_llb\"]")
             for var result in htmlresult!{
+//                let aaa = (result.xPath("h3")).first
+//                let bbb = (result.xPath("div[@id=\"endtext\"]").first?.content)
                 datas.append(PickItem(title: (result.xPath("h3").first?.content)!, content:(result.xPath("div[@id=\"endtext\"]").first?.content)! ))
             }
         } else {

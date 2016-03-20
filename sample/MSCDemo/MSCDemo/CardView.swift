@@ -96,9 +96,7 @@ class CardView: UIView {
          lable.textColor=MaterialColor.white
         lable.numberOfLines=0
        
-        
-//       let a = arc4random_uniform( CardView.colors.count)
-         self.backgroundColor = CardView.colors[Int(arc4random()) % (CardView.colors.count)]
+         self.backgroundColor = CardView.colors[Int( random()) % (CardView.colors.count)]
         
         
         var frameScore = CGRect()
