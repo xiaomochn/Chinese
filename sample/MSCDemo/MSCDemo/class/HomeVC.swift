@@ -112,7 +112,7 @@ class HomeVC: ISEViewController {
         if self.datas.count > currentIndex{
             cardView.itemDate=self.datas[currentIndex]
             cardView.pageNum=currentIndex
-            currentIndex++
+            currentIndex += 1
         }
         if (self.datas.count < (self.currentIndex + 10)){
             self.updateDatas()

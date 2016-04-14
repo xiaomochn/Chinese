@@ -57,6 +57,13 @@
 		CD28ABAF1C8FED9C00808902 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28ABAE1C8FED9C00808902 /* HomeVC.swift */; };
 		CD28ABB11C8FF9FB00808902 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28ABB01C8FF9FB00808902 /* CardView.swift */; };
 		CD28ABB81C9169E200808902 /* PickItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28ABB71C9169E200808902 /* PickItem.swift */; };
+		CD28B8C21CBF4246004D2FC1 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CD28B8C11CBF4246004D2FC1 /* libicucore.tbd */; };
+		CD28B8C41CBF424D004D2FC1 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CD28B8C31CBF424D004D2FC1 /* libz.1.2.5.tbd */; };
+		CD28B8C61CBF4256004D2FC1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD28B8C51CBF4256004D2FC1 /* Security.framework */; };
+		CD28B8C81CBF425D004D2FC1 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD28B8C71CBF425D004D2FC1 /* JavaScriptCore.framework */; };
+		CD28B8CA1CBF4265004D2FC1 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CD28B8C91CBF4265004D2FC1 /* libstdc++.tbd */; };
+		CD28B8CC1CBF426B004D2FC1 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD28B8CB1CBF426B004D2FC1 /* CoreText.framework */; };
+		CD28B8CE1CBF4274004D2FC1 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CD28B8CD1CBF4274004D2FC1 /* libsqlite3.tbd */; };
 		CD86E85D1C9681A300263088 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E85C1C9681A300263088 /* GlobalVariables.swift */; };
 		CD86E85F1C9682F600263088 /* MyLoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E85E1C9682F600263088 /* MyLoveViewController.swift */; };
 		CD86E8611C96835600263088 /* MyLoveViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E8601C96835600263088 /* MyLoveViewCell.swift */; };
@@ -166,6 +173,13 @@
 		CD28ABAE1C8FED9C00808902 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeVC.swift; path = class/HomeVC.swift; sourceTree = "<group>"; };
 		CD28ABB01C8FF9FB00808902 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		CD28ABB71C9169E200808902 /* PickItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickItem.swift; sourceTree = "<group>"; };
+		CD28B8C11CBF4246004D2FC1 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		CD28B8C31CBF424D004D2FC1 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		CD28B8C51CBF4256004D2FC1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CD28B8C71CBF425D004D2FC1 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		CD28B8C91CBF4265004D2FC1 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		CD28B8CB1CBF426B004D2FC1 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		CD28B8CD1CBF4274004D2FC1 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		CD86E85C1C9681A300263088 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		CD86E85E1C9682F600263088 /* MyLoveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLoveViewController.swift; sourceTree = "<group>"; };
 		CD86E8601C96835600263088 /* MyLoveViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLoveViewCell.swift; sourceTree = "<group>"; };
@@ -192,14 +206,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD28B8CE1CBF4274004D2FC1 /* libsqlite3.tbd in Frameworks */,
+				CD28B8CC1CBF426B004D2FC1 /* CoreText.framework in Frameworks */,
+				CD28B8CA1CBF4265004D2FC1 /* libstdc++.tbd in Frameworks */,
+				CD28B8C81CBF425D004D2FC1 /* JavaScriptCore.framework in Frameworks */,
+				CD28B8C61CBF4256004D2FC1 /* Security.framework in Frameworks */,
+				CD28B8C41CBF424D004D2FC1 /* libz.1.2.5.tbd in Frameworks */,
+				CD28B8C21CBF4246004D2FC1 /* libicucore.tbd in Frameworks */,
+				E92E12F619F88BF2000AA6DC /* CoreTelephony.framework in Frameworks */,
+				E931A1601760555A0077E502 /* QuartzCore.framework in Frameworks */,
+				E99D762C1761ABFE005A02FD /* SystemConfiguration.framework in Frameworks */,
 				AD045F591BB0EFB6004E3799 /* libz.tbd in Frameworks */,
 				E92E12F819F88BFD000AA6DC /* CoreLocation.framework in Frameworks */,
-				E92E12F619F88BF2000AA6DC /* CoreTelephony.framework in Frameworks */,
 				EF18454E1831D10B00C8068F /* AVFoundation.framework in Frameworks */,
 				E99CBC561762DB170050565D /* AddressBook.framework in Frameworks */,
-				E99D762C1761ABFE005A02FD /* SystemConfiguration.framework in Frameworks */,
 				E99D762B1761ABBF005A02FD /* AudioToolbox.framework in Frameworks */,
-				E931A1601760555A0077E502 /* QuartzCore.framework in Frameworks */,
 				E9706F37175F383E003B76FC /* UIKit.framework in Frameworks */,
 				E9706F39175F383E003B76FC /* Foundation.framework in Frameworks */,
 				E9706F3B175F383E003B76FC /* CoreGraphics.framework in Frameworks */,
@@ -479,6 +500,13 @@
 		E9706F35175F383E003B76FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD28B8CD1CBF4274004D2FC1 /* libsqlite3.tbd */,
+				CD28B8CB1CBF426B004D2FC1 /* CoreText.framework */,
+				CD28B8C91CBF4265004D2FC1 /* libstdc++.tbd */,
+				CD28B8C71CBF425D004D2FC1 /* JavaScriptCore.framework */,
+				CD28B8C51CBF4256004D2FC1 /* Security.framework */,
+				CD28B8C31CBF424D004D2FC1 /* libz.1.2.5.tbd */,
+				CD28B8C11CBF4246004D2FC1 /* libicucore.tbd */,
 				AD045F581BB0EFB6004E3799 /* libz.tbd */,
 				84C06CFF1AF9AD71002290E6 /* iflyMSC.framework */,
 				E92E12F719F88BFD000AA6DC /* CoreLocation.framework */,
@@ -560,6 +588,11 @@
 				TargetAttributes = {
 					E9706F31175F383E003B76FC = {
 						DevelopmentTeam = 8EQ8DUTDZW;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

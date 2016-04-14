@@ -9,6 +9,11 @@
 #import "MSCAppDelegate.h"
 #import "iflyMSC/IFlyMSC.h"
 #import "Definition.h"
+#import <ShareSDK/ShareSDK.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "WXApi.h"
+#import "WeiboSDK.h"
 
 @implementation MSCAppDelegate
 
@@ -32,8 +37,59 @@
     
     //所有服务启动前，需要确保执行createUtility
     [IFlySpeechUtility createUtility:initString];
-
+    [self initShareSdk];
     return YES;
+}
+
+- (void)initShareSdk
+{
+    [ShareSDK registerApp:@"api20"];//字符串api20为您的ShareSDK的AppKey
+    
+    //添加新浪微博应用 注册网址 http://open.weibo.com
+    [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
+                               appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+                             redirectUri:@"http://www.sharesdk.cn"];
+    //当使用新浪微博客户端分享的时候需要按照下面的方法来初始化新浪的平台
+    [ShareSDK  connectSinaWeiboWithAppKey:@"568898243"
+                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+                              redirectUri:@"http://www.sharesdk.cn"
+                              weiboSDKCls:[WeiboSDK class]];
+    
+    //添加腾讯微博应用 注册网址 http://dev.t.qq.com
+    [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
+                                  appSecret:@"ae36f4ee3946e1cbb98d6965b0b2ff5c"
+                                redirectUri:@"http://www.sharesdk.cn"];
+    
+    //添加QQ空间应用  注册网址  http://connect.qq.com/intro/login/
+    [ShareSDK connectQZoneWithAppKey:@"100371282"
+                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"
+                   qqApiInterfaceCls:[QQApiInterface class]
+                     tencentOAuthCls:[TencentOAuth class]];
+    
+    //添加QQ应用  注册网址   http://mobile.qq.com/api/
+    [ShareSDK connectQQWithQZoneAppKey:@"100371282"
+                     qqApiInterfaceCls:[QQApiInterface class]
+                       tencentOAuthCls:[TencentOAuth class]];
+    
+    //微信登陆的时候需要初始化
+    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
+                           appSecret:@"64020361b8ec4c99936c0e3999a9f249"
+                           wechatCls:[WXApi class]];
+    
+  
+   
+    
+   
+    
+    
+    //添加Facebook应用  注册网址 https://developers.facebook.com
+    [ShareSDK connectFacebookWithAppKey:@"107704292745179"
+                              appSecret:@"38053202e1a5fe26c80c753071f0b573"];
+    
+    //添加Twitter应用  注册网址  https://dev.twitter.com
+    [ShareSDK connectTwitterWithConsumerKey:@"mnTGqtXk0TYMXYTN7qUxg"
+                             consumerSecret:@"ROkFqr8c3m1HXqS3rm3TJ0WkAJuwBOSaWhPbZ9Ojuc"
+                                redirectUri:@"http://www.sharesdk.cn"];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
