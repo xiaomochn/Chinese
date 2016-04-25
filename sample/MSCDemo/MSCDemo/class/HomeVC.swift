@@ -12,6 +12,7 @@ import Alamofire
 import Ji
 import Material
 import DeformationButton
+
 class HomeVC: ISEViewController {
     var currentIndex = 0
     var currentPage = 0
@@ -198,4 +199,8 @@ class HomeVC: ISEViewController {
 //        
 //    }
     
+    @IBAction func shareClick(sender: AnyObject) {
+        
+        
+    }
 }

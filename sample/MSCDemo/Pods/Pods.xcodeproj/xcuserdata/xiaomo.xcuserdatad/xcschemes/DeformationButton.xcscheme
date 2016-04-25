@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '658B4D0373C031F01F4E3564'
+               BlueprintIdentifier = '57B6366A09AE3ED4D6D7F786'
                BlueprintName = 'DeformationButton'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'DeformationButton.framework'>

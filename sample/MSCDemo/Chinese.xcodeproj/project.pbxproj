@@ -64,6 +64,7 @@
 		CD28B8CA1CBF4265004D2FC1 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CD28B8C91CBF4265004D2FC1 /* libstdc++.tbd */; };
 		CD28B8CC1CBF426B004D2FC1 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD28B8CB1CBF426B004D2FC1 /* CoreText.framework */; };
 		CD28B8CE1CBF4274004D2FC1 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CD28B8CD1CBF4274004D2FC1 /* libsqlite3.tbd */; };
+		CD28B8D11CBF7327004D2FC1 /* ShareSdkm.m in Sources */ = {isa = PBXBuildFile; fileRef = CD28B8D01CBF7327004D2FC1 /* ShareSdkm.m */; };
 		CD86E85D1C9681A300263088 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E85C1C9681A300263088 /* GlobalVariables.swift */; };
 		CD86E85F1C9682F600263088 /* MyLoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E85E1C9682F600263088 /* MyLoveViewController.swift */; };
 		CD86E8611C96835600263088 /* MyLoveViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86E8601C96835600263088 /* MyLoveViewCell.swift */; };
@@ -180,6 +181,8 @@
 		CD28B8C91CBF4265004D2FC1 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		CD28B8CB1CBF426B004D2FC1 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		CD28B8CD1CBF4274004D2FC1 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		CD28B8CF1CBF7327004D2FC1 /* ShareSdkm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSdkm.h; sourceTree = "<group>"; };
+		CD28B8D01CBF7327004D2FC1 /* ShareSdkm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSdkm.m; sourceTree = "<group>"; };
 		CD86E85C1C9681A300263088 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		CD86E85E1C9682F600263088 /* MyLoveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLoveViewController.swift; sourceTree = "<group>"; };
 		CD86E8601C96835600263088 /* MyLoveViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLoveViewCell.swift; sourceTree = "<group>"; };
@@ -457,6 +460,8 @@
 				CD28ABB01C8FF9FB00808902 /* CardView.swift */,
 				CD28ABAE1C8FED9C00808902 /* HomeVC.swift */,
 				CD0A26E11C92C6C500C59BF8 /* RootTabViewController.swift */,
+				CD28B8CF1CBF7327004D2FC1 /* ShareSdkm.h */,
+				CD28B8D01CBF7327004D2FC1 /* ShareSdkm.m */,
 			);
 			name = class;
 			sourceTree = "<group>";
@@ -703,6 +708,7 @@
 				845FA0361AFC5186008447CE /* PcmPlayer.m in Sources */,
 				52D282361AEB652B00D4AD4B /* SAMath.m in Sources */,
 				845FA0371AFC5186008447CE /* PopupView.m in Sources */,
+				CD28B8D11CBF7327004D2FC1 /* ShareSdkm.m in Sources */,
 				84A85D981B4CFDA80056929E /* ISEResultPhone.m in Sources */,
 				845FA0301AFC5186008447CE /* UnderstandViewController.m in Sources */,
 				845FA0331AFC5186008447CE /* TTSUIController.m in Sources */,

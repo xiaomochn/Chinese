@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.2.1)
+  - Alamofire (3.3.1)
   - DatePickerCell (1.0.4)
   - DeformationButton (1.1)
   - DGElasticPullToRefresh (1.0.2)
@@ -10,9 +10,9 @@ PODS:
   - Ji/Ji (1.2.0):
     - Ji/Ji-libxml
   - Ji/Ji-libxml (1.2.0)
-  - LTMorphingLabel (0.1.1)
+  - LTMorphingLabel (0.2.0)
   - M13ProgressSuite (1.2.7)
-  - Material (1.36.0)
+  - Material (1.39.11)
   - MJRefresh (3.1.0)
   - MOBFoundation (1.5.1)
   - PagingMenuController (0.8.0)
@@ -71,7 +71,7 @@ DEPENDENCIES:
   - PagingMenuController
   - SBJson (~> 4.0.2)
   - SDWebImage (~> 3.7.3)
-  - ShareSDK2
+  - ShareSDK2 (= 2.12.4)
   - ShareSDK2/Comment
   - ShareSDK2/Connection/Mail
   - ShareSDK2/Connection/QQ
@@ -85,16 +85,16 @@ DEPENDENCIES:
   - ZLSwipeableViewSwift
 
 SPEC CHECKSUMS:
-  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   DatePickerCell: 20d2ba8b5cd5bb8a5a79e2b43bc7758e3b65daf2
   DeformationButton: ea42bae012b20cadbab500cad15ed3053721bed8
   DGElasticPullToRefresh: 49cc35f3509b46a58a8f45ae0165d0a8e0feccea
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
   Ji: ddebb22f9ac445db6e884b66f78ea74fb135fdb7
-  LTMorphingLabel: dfc40f43a0dcf81867b1f29431f34e861a5f1b35
+  LTMorphingLabel: 490aa8e079f9247c7f3130f7d4b1be1d66677377
   M13ProgressSuite: 03d194af6359da440641ba758aed5a18b0386a86
-  Material: 3162fe1199c62599e977f08515389a4380aaf2ba
+  Material: ef60d987176b383e50ea0cb84aa9d84b47d6385c
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   MOBFoundation: 79efc94db961fe5a08cf32de69166f6a29a3b2b5
   PagingMenuController: 1a9ff8ad0ab9704f215706997c1a624bc951f508
